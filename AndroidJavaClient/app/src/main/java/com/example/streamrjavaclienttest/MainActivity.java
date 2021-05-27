@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.streamr.client.MessageHandler;
 import com.streamr.client.StreamrClient;
 import com.streamr.client.authentication.EthereumAuthenticationMethod;
-import com.streamr.client.options.StreamrClientOptions;
 import com.streamr.client.protocol.message_layer.StreamMessage;
 import com.streamr.client.rest.Stream;
 import com.streamr.client.subs.Subscription;
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Thread subscribingThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                TextView textView = (TextView) findViewById(R.id.textView);
+                TextView textView = (TextView) findViewById(R.id.subscribingTextView);
                 textView.setText("Subscribing Thread");
                 try {
                     setText(textView, "Starting Subscribing Streamr Client");
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Thread publishingThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                TextView textView = (TextView) findViewById(R.id.textView2);
+                TextView textView = (TextView) findViewById(R.id.publishingTextView);
                 textView.setText("Publishing Thread");
                 try {
                     setText(textView, "Starting Publishing Streamr Client");
@@ -73,9 +72,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        subscribingThread.start();
-        publishingThread.start();
-
+        if (ethereumPrivateKey == "YOUR_ETHEREUM_PRIVATE_KEY" || streamId == "YOUR_STREAM_ID") {
+            setText(
+                (TextView) findViewById(R.id.publishingTextView),
+                "Did you forget to set your Ethereum Private key or Stream ID"
+            );
+        } else {
+            subscribingThread.start();
+            publishingThread.start();
+        }
     }
 
     private void setText(final TextView text,final String value){
