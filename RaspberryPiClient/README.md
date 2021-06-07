@@ -1,0 +1,2 @@
+#  Raspberry Pi CPU Usage Stream
+This simple node script first reads through the RPi system to get the CPU usage. I have several helper functions which help to convert the data into a percentage for better readability. I've also created a Streamr stream which I publish to whenever I call the method to retrieve the CPU data. I call this method every 1 second so it publishes a data point to the streamr every second.
