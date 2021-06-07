@@ -40,7 +40,7 @@ const getCPUInfo = () => {
 
     console.log("Current CPU Usage: " + currentCPUInfo.percentUsed + "%");
 
-    client.publish("0x5cb8a3553eae22669d62335332978cb43d035930/rpi-cpu", {
+    client.publish("STREAM-ID", {
       cpuUsage: "Current CPU Usage: " + currentCPUInfo.percentUsed + "%",
     });
   });
