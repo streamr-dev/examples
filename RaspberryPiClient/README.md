@@ -1,2 +1,19 @@
 #  Raspberry Pi CPU Usage Stream
-This simple node script first reads through the RPi system to get the CPU usage. I have several helper functions which help to convert the data into a percentage for better readability. I've also created a Streamr stream which I publish to whenever I call the method to retrieve the CPU data. I call this method every 1 second so it publishes a data point to the streamr every second.
+This simple node script first reads through the RPi system to get the CPU usage.
+
+## Setting Up
+
+Install dependencies using npm or yarn:
+
+`npm install` or `yarn install`
+
+This script requires an ethereum private key. You should create a `.env` file in the root directory and add this line:
+
+`ETHEREUM_PRIVATE_KEY=`
+
+Paste your private key after the equals sign.
+
+## Running
+
+Use `npm run start` or `yarn start` to run node script.
+
