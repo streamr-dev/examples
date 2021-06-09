@@ -1,6 +1,8 @@
 #  Raspberry Pi CPU Usage Stream
 This simple node script first reads through the RPi system to get the CPU usage.
 
+Video Tutorial: https://youtu.be/WHmCSKq2CdI
+
 ## Setting Up
 
 ### Etherum Private Key
@@ -22,4 +24,3 @@ You will also need a Stream ID which you can get by creating a new Stream on Str
 ## Running
 
 Use `npm run start` or `yarn start` to run node script.
-
