@@ -1,0 +1,14 @@
+{
+  "name": "streamr-client-node-example",
+  "version": "0.0.1",
+  "description": "Using streamr-client in node",
+  "type": "module",
+  "main": "node.js",
+  "scripts": {
+    "subscribe": "node node-example-subscribe.js",
+    "publish": "node node-example-produce.js"
+  },
+  "dependencies": {
+    "streamr-client": "^5.4.4"
+  }
+}
