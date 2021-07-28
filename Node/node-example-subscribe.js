@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import { StreamrClient } from 'streamr-client';
-
-// Create the client and supply either an API key or an Ethereum private key to authenticate
-const client = new StreamrClient({
-    auth: {
-        privateKey: 'ETHEREUM-PRIVATE-KEY',
-=======
 import StreamrClient from 'streamr-client';
 
 // REPLACE THIS WITH YOUR OWN PRIVATE KEY
@@ -19,17 +11,12 @@ if (PRIVATE_KEY === 'YOUR-PRIVATE-KEY') {
 const client = new StreamrClient({
     auth: {
         privateKey: PRIVATE_KEY,
->>>>>>> update-examples-from-monorepo
     },
 })
 
 // Create a stream for this example if it doesn't exist
 client.getOrCreateStream({
-<<<<<<< HEAD
-    name: 'node-example-data',
-=======
     id: `${await client.getAddress()}/node-example-data`,
->>>>>>> update-examples-from-monorepo
 }).then((stream) => {
     client.subscribe(
         {
