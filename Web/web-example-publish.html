@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <script src="https://unpkg.com/streamr-client@5.4.4/streamr-client.web.js"></script>
+    <script src="https://unpkg.com/streamr-client@latest/streamr-client.web.js"></script>
 
 </head>
 
@@ -51,7 +51,7 @@
 
             // Publish the event to the Stream
             client.publish(STREAM_ID, msg)
-                .then(() => log(`Sent successfully: ${JSON.stringify(msg)}`))
+                .then(() => log(`Msg to ${STREAM_ID} published successfully: ${JSON.stringify(msg)}`))
                 .catch((err) => log(err))
         }
     </script>

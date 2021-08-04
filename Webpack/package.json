@@ -31,6 +31,6 @@
   "#": "Update core-js -> 3.6.2, after releasing new version of client",
   "dependencies": {
     "@babel/runtime": "^7.11.2",
-    "streamr-client": "^5.4.4"
+    "streamr-client": "latest"
   }
 }

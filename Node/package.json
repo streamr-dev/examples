@@ -5,10 +5,10 @@
   "type": "module",
   "main": "node.js",
   "scripts": {
-    "subscribe": "node node-example-subscribe.js",
-    "publish": "node node-example-produce.js"
+    "publish": "node node-example-publish.js",
+    "subscribe": "node node-example-subscribe.js"
   },
   "dependencies": {
-    "streamr-client": "^5.4.4"
+    "streamr-client": "latest"
   }
 }
