@@ -21,4 +21,6 @@ Shows how to authenticate to Streamr using Metamask and can create new streams a
 
 ## Running examples
 
-Open the html files in your browser.
+Open the html files in your browser using `open web-example-publish.html` or `open web-example-subscribe.html`. 
+
+**IMPORTANT:** For the Metamask example, you will need to install [live-server](https://github.com/tapio/live-server) and run the html file with it using `live-server web-example-metamask.html`.

@@ -17,7 +17,8 @@
 
         async function connectEthereum() {
             // This is called when the user clicks "Connect"
-            if (!ethereum) {
+            console.log(window.ethereum)
+            if (!window.ethereum) {
                 alert('No metamask installed!')
                 return;
             }
