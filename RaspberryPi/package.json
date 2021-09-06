@@ -1,0 +1,9 @@
+{
+    "name": "RaspberryPiClient",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "streamr-client": "latest"
+    }
+}
