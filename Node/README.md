@@ -6,7 +6,7 @@ This example demostrates how to use the Streamr Client in a Node environment. No
 
 ### Ethereum Private Key
 
-If you are using the publish script, replace the [following line](https://github.com/streamr-dev/examples/blob/c2c736e25911705c0f549637a73654168bb2ec10/Node/node-example-publish.js#L4) with your private key.
+If you are using the publish script, replace the [following line](https://github.com/streamr-dev/examples/blob/a70893cf03f124d613d3a51561b2ec8c3cb8a0bf/Node/node-example-publish.js#L4) with your private key.
 
 If you are using the subscribe script, replace the [following line](https://github.com/streamr-dev/examples/blob/c2c736e25911705c0f549637a73654168bb2ec10/Node/node-example-subscribe.js#L4) with your private key.
 
