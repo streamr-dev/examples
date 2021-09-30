@@ -59,6 +59,8 @@ $ npm run sdk:http-publish
 ```
 
 ### WS Endpoint
+> Lacks apiKey examples for authorized brokers
+
 One can exercise the [`publish`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/ws-publish.js) and [`subscribe`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/ws-subscribe.js) using the WebSockets plugin on the broker. 
 
 In order to run the respective examples execute from your terminal:
@@ -72,6 +74,8 @@ $ npm run sdk:ws-publish
 - You must connect to different paths (`/streams/{streamId}/publish` vs `/streams/{streamId}/subscribe`) to interact with the network
 
 ### MQTT Endpoint
+> Lacks apiKey examples for authorized brokers
+
 One can exercise the [`publish`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/mqtt-publish.js) and [`subscribe`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/mqtt-subscribe.js) using the MQTT plugin on the broker. 
 
 In order to run the respective examples execute from your terminal:
