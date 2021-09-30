@@ -6,7 +6,9 @@
   "main": "node.js",
   "scripts": {
     "broker:start": "streamr-broker src/broker/config.json",
-    "broker:http:publish": "node src/broker/http-publish.js",
+    "sdk:http-publish": "node src/broker/http-publish.js",
+    "sdk:ws-publish": "node src/broker/ws-publish.js",
+    "sdk:ws-subscribe": "node src/broker/ws-subscribe.js",
     "client:publish": "node src/client/publish.js",
     "client:subscribe": "node src/client/subscribe.js",
     "client:resend": "node src/client/resend.js"
@@ -15,6 +17,7 @@
     "ethers": "^5.4.7",
     "streamr-broker": "^29.0.0",
     "streamr-client": "6.0.0-alpha.6",
-    "superagent": "^6.1.0"
+    "superagent": "^6.1.0",
+    "ws": "^8.2.2"
   }
 }

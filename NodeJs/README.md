@@ -31,20 +31,37 @@ The Streamr JavaScript Client imports and runs a Streamr light node as a library
 ## Broker & SDKs
 The Broker acts as a relayer node from it's HTTP/WS/MQTT APIs into the Streamr Network
 ### Broker setup
-```
+```console
 $ npm install streamr-broker --global
-$ broker broker-config.json
+$ npm run broker:start
 ```
-The [default config](./broker-config.json) has the HTTP, WS and MQTT plugins enabled by default to allow for SDK interaction
+The [default config](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/broker-config.json) has the HTTP, WS and MQTT plugins enabled by default to allow for SDK interaction.
 
 ### HTTP Endpoint
 - [API Reference](https://api-explorer.streamr.com/)
 
-(Probably the same same methods demonstrated on the Light Node (JS)?)
+One can exercise the [`publish`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/http-publish.js) using the HTTP plugin on the broker. 
+
+
+In order to run the example execute from your terminal:
+```console
+$ npm run broker:http-publish
+```
+
 ### WS Endpoint
-(Probably the same same methods demonstrated on the Light Node (JS)?)
+One can exercise the [`publish`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/ws-publish.js) and [`subscribe`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/ws-subscribe.js) using the WebSockets plugin on the broker. 
+
+In order to run the respective examples execute from your terminal:
+```console
+$ npm run broker:ws-subscribe
+$ npm run broker:ws-publish
+```
+
+**Things to remember**
+- Any ws client library can be used to interact with the broker
+- You must connect to different paths (`/streams/{streamId}/publish` vs `/streams/{streamId}/subscribe`) to interact with the network
+
 ### MQTT Endpoint
-(Probably the same same methods demonstrated on the Light Node (JS)?)
 
 
 ## Resources

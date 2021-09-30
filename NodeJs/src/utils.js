@@ -12,9 +12,4 @@ export const utils = {
         }
     },
 
-    enableAllPermissions: async (stream) => {
-        await stream.grantPermission(StreamOperation.STREAM_GET, undefined)
-        await stream.grantPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
-        await stream.grantPermission(StreamOperation.STREAM_PUBLISH, undefined)
-    }
 }
