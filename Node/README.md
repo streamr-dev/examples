@@ -2,18 +2,50 @@
 
 This example demostrates how to use the Streamr Client in a Node environment. Node version 14 or higher is recommended.
 
-## Setting Up
+## Standalone Client
+[(Existing docs)](https://github.com/streamr-dev/network-monorepo/blob/main/packages/client/README.md)
 
-### Ethereum Private Key
+Fully flexed Streamr Node that interacts with the p2p environment.
+- import fashions (`require` vs `import`)
+- StreamrClient constructor 
+- `client` class
+    - client.connect/disconnect
+    - client.subscribe
+    - client.unsubscribe
+    - client.unsubcribeAll
+    - client.getSubscriptions
+    - client.resend 
+    - client.createStream 
+    - client.getStream 
+    - client.getOrCreateStream
+    - client.publish
+- `stream` class
+    - stream.addToStorageNode
+    - stream.getPermissions
+    - stream.hasPermissions
+    - stream.grantPermission
+    - stream.revokePermission
+    - stream.publish
+- data unions 
 
-If you are using the publish script, replace the [following line](https://github.com/streamr-dev/examples/blob/c2c736e25911705c0f549637a73654168bb2ec10/Node/node-example-publish.js#L4) with your private key.
+## Broker & SDKs
+The Broker acts as a relayer node from it's HTTP/WS/MQTT APIs into the p2p environment
+### Broker setup
+```
+$ npm install streamr-broker --global
+$ broker broker-config.json
+```
+The [default config](./broker-config.json) has the HTTP, WS and MQTT plugins enabled by default to allow for SDK interaction
 
-If you are using the subscribe script, replace the [following line](https://github.com/streamr-dev/examples/blob/c2c736e25911705c0f549637a73654168bb2ec10/Node/node-example-subscribe.js#L4) with your private key.
+### HTTP Endpoint
+- [API Reference](https://api-explorer.streamr.com/)
 
-## Running
+(Probably the same same methods demonstrated on the Standalone Client?)
+### WS Endpoint
+(Probably the same same methods demonstrated on the Standalone Client?)
+### MQTT Endpoint
+(Probably the same same methods demonstrated on the Standalone Client?)
 
-To run the pub-sub demo,
-1. Run `npm install`
-2. Replace the private key with your own. There are online generators for this, or you can extract your Ethereum private key from Metamask. Do not store significant value on this account.
-3. In one console window, run `npm run publish`. This will start publishing data points into a stream.
-4. In another console window, run `npm run subcribe`. You should be able to see the messages published from your other console window. You can run this subcription process as many times as you wish.
+
+## Resources
+- [Fix permissions when globally installing broker](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)

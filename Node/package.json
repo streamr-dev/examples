@@ -5,10 +5,16 @@
   "type": "module",
   "main": "node.js",
   "scripts": {
-    "publish": "node node-example-publish.js",
-    "subscribe": "node node-example-subscribe.js"
+    "broker:start": "streamr-broker src/broker/config.json",
+    "broker:http": "node src/broker/http-endpoint.js",
+    "client:publish": "node src/client/publish.js",
+    "client:subscribe": "node src/client/subscribe.js",
+    "client:resend": "node src/client/resend.js"
   },
   "dependencies": {
-    "streamr-client": "latest"
+    "ethers": "^5.4.7",
+    "streamr-broker": "^29.0.0",
+    "streamr-client": "6.0.0-alpha.6",
+    "superagent": "^6.1.0"
   }
 }
