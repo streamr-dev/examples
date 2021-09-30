@@ -41,6 +41,7 @@ $ npm run client:resend
 
 ## Broker & SDKs
 - [Examples directory](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/)
+
 The Broker acts as a relayer node from it's HTTP/WS/MQTT APIs into the Streamr Network
 ### Broker setup
 ```shell
