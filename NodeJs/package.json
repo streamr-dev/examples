@@ -9,12 +9,15 @@
     "sdk:http-publish": "node src/broker/http-publish.js",
     "sdk:ws-publish": "node src/broker/ws-publish.js",
     "sdk:ws-subscribe": "node src/broker/ws-subscribe.js",
+    "sdk:mqtt-publish": "node src/broker/mqtt-publish.js",
+    "sdk:mqtt-subscribe": "node src/broker/mqtt-subscribe.js",
     "client:publish": "node src/client/publish.js",
     "client:subscribe": "node src/client/subscribe.js",
     "client:resend": "node src/client/resend.js"
   },
   "dependencies": {
     "ethers": "^5.4.7",
+    "mqtt": "^4.2.8",
     "streamr-broker": "^29.0.0",
     "streamr-client": "6.0.0-alpha.6",
     "superagent": "^6.1.0",
