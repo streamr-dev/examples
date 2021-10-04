@@ -15,7 +15,6 @@ export const createClient = async () => {
         },
     })
 
-
     const stream = await client.getOrCreateStream({
         id: `${await client.getAddress()}/node-example-data`
     })

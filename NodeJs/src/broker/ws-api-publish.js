@@ -15,8 +15,9 @@ if (!utils.isValidPrivateKey(PRIVATE_KEY)) {
 
 const main = async () => {
     const address = new Wallet(PRIVATE_KEY).address
+    const apiKey = 'MTgzYTM3NzVmOTIzNDA2NThiMjEwZDJhYzE1MjcyNTU'
     const streamId = encodeURIComponent(`${address}/node-example-data`)
-    const ws = new WebSocket(`ws://localhost:7170/streams/${streamId}/publish`)
+    const ws = new WebSocket(`ws://localhost:7170/streams/${streamId}/publish?apiKey=${apiKey}`)
 
     ws.on('open', () => {
         setInterval(async () => {

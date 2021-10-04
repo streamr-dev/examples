@@ -6,11 +6,16 @@
   "main": "node.js",
   "scripts": {
     "broker:start": "streamr-broker src/broker/config.json",
+    "broker:start-api-key": "streamr-broker src/broker/config-api-key.json",
     "sdk:http-publish": "node src/broker/http-publish.js",
     "sdk:ws-publish": "node src/broker/ws-publish.js",
+    "sdk:ws-api-key-publish": "node src/broker/ws-api-publish.js",
     "sdk:ws-subscribe": "node src/broker/ws-subscribe.js",
+    "sdk:ws-api-key-subscribe": "node src/broker/ws-api-subscribe.js",
     "sdk:mqtt-publish": "node src/broker/mqtt-publish.js",
+    "sdk:mqtt-api-key-publish": "node src/broker/mqtt-api-publish.js",
     "sdk:mqtt-subscribe": "node src/broker/mqtt-subscribe.js",
+    "sdk:mqtt-api-key-subscribe": "node src/broker/mqtt-api-subscribe.js",
     "client:publish": "node src/client/publish.js",
     "client:subscribe": "node src/client/subscribe.js",
     "client:resend": "node src/client/resend.js"

@@ -15,19 +15,13 @@ if (!utils.isValidPrivateKey(PRIVATE_KEY)) {
 
 const main = async () => {
     const address = new Wallet(PRIVATE_KEY).address
+    const apiKey = 'MTgzYTM3NzVmOTIzNDA2NThiMjEwZDJhYzE1MjcyNTU'
     const streamId = encodeURIComponent(`${address}/node-example-data`)
-    const ws = new WebSocket(`ws://localhost:7170/streams/${streamId}/publish`)
+    const ws = new WebSocket(`ws://localhost:7170/streams/${streamId}/subscribe?apiKey=${apiKey}`)
 
-    ws.on('open', () => {
-        setInterval(async () => {
-            const message = { 
-                type: 'broker:ws:publish',
-                ts: Date.now()
-            } 
-    
-            ws.send(JSON.stringify(message))
-            console.log('Sent successfully: ', message)
-        }, 1000)
+    ws.on('message', (json) => {
+        const data = JSON.parse(json)
+        console.log('Received data: ', data)
     })
 }
 
