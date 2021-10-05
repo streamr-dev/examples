@@ -1,7 +1,7 @@
-import { createClient } from './create.js'
+import { utils } from './utils.js'
 
 const main = async () => {
-    const { stream, client } = await createClient()
+    const { stream, client } = await utils.createClient()
     setInterval(async () => {
         const message = { 
             type: 'client:publish',

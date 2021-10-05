@@ -1,8 +1,8 @@
-import { createClient } from './create.js'
+import { utils } from './utils.js'
 
 const main = async () => {
     // Create a stream for this example if it doesn't exist
-    const { stream, client } = await createClient()
+    const { stream, client } = await utils.createClient()
 
     // ensure that the stream is being stored!
     await stream.addToStorageNode({

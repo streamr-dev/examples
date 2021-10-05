@@ -1,0 +1,29 @@
+{
+  "name": "streamr-client-node-example",
+  "version": "0.0.1",
+  "description": "Using streamr-client in node",
+  "type": "module",
+  "main": "node.js",
+  "scripts": {
+    "broker:start": "streamr-broker src/config.json",
+    "broker:start-api-key": "streamr-broker src/config-api-key.json",
+    "http:publish": "node --experimental-json-modules src/http-publish.js",
+    "http:api-key-publish": "node --experimental-json-modules src/http-api-publish.js",
+    "ws:publish": "node --experimental-json-modules src/ws-publish.js",
+    "ws:api-key-publish": "node --experimental-json-modules src/ws-api-publish.js",
+    "ws:subscribe": "node --experimental-json-modules src/ws-subscribe.js",
+    "ws:api-key-subscribe": "node --experimental-json-modules src/ws-api-subscribe.js",
+    "mqtt:publish": "node --experimental-json-modules src/mqtt-publish.js",
+    "mqtt:api-key-publish": "node --experimental-json-modules src/mqtt-api-publish.js",
+    "mqtt:subscribe": "node --experimental-json-modules src/mqtt-subscribe.js",
+    "mqtt:api-key-subscribe": "node --experimental-json-modules src/mqtt-api-subscribe.js"
+  },
+  "dependencies": {
+    "ethers": "^5.4.7",
+    "mqtt": "^4.2.8",
+    "streamr-broker": "^29.0.0",
+    "streamr-client": "6.0.0-alpha.6",
+    "superagent": "^6.1.0",
+    "ws": "^8.2.2"
+  }
+}
