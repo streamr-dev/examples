@@ -13,7 +13,7 @@ const PRIVATE_KEY = BrokerConfig.default.ethereumPrivateKey
 const main = async () => {
     const address = new Wallet(PRIVATE_KEY).address
     const streamId = `${address}/node-example-data`
-    const client = mqtt.connect(`mqtt://localhost:1883`)
+    const client = mqtt.connect('mqtt://localhost:1883')
 
     client.on('connect', () => {
         client.subscribe(streamId, (err) => {

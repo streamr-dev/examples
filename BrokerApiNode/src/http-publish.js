@@ -3,8 +3,6 @@ import { Wallet } from 'ethers'
 import * as BrokerConfig from './config.json'
 
 const PRIVATE_KEY = BrokerConfig.default.ethereumPrivateKey
-console.log(BrokerConfig)
-
 
 const main = async () => {
     const address = new Wallet(PRIVATE_KEY).address
