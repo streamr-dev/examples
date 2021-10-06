@@ -12,6 +12,18 @@ export const utils = {
             return false
         }
     },
+/*
+    createStream: async (streamPath = '/node-example-data') => {
+        const stream = await client.getOrCreateStream({
+            id: `${await client.getAddress()}/${streamPath}`
+        })
+
+        // And ensure it is publically available
+        await stream.grantPermission(StreamOperation.STREAM_GET, undefined)
+        await stream.grantPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
+        await stream.grantPermission(StreamOperation.STREAM_PUBLISH, undefined)
+        return stream
+    },
 
     createClient: async () => {
         const PRIVATE_KEY = config.privateKey
@@ -27,17 +39,9 @@ export const utils = {
             },
         })
     
-        // Get or create the default stream
-        const stream = await client.getOrCreateStream({
-            id: `${await client.getAddress()}/node-example-data`
-        })
-        // And ensure it is publically available
-        await stream.grantPermission(StreamOperation.STREAM_GET, undefined)
-        await stream.grantPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
-        await stream.grantPermission(StreamOperation.STREAM_PUBLISH, undefined)
-    
-        return {client, stream}
-    }
+        // Get or create the default stream    
+        return client
+    }*/
 
 }
 

@@ -1,6 +1,6 @@
-import { StreamrClient } from 'streamr-client'
-import { config } from './config.js'
-import { utils } from './utils.js'
+import { StreamrClient, StreamOperation } from 'streamr-client'
+import { config } from '../config.js'
+import { utils } from '../utils.js'
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -13,22 +13,26 @@ const main = async () => {
     const client = new StreamrClient({
         auth: {
             privateKey: PRIVATE_KEY,
-        },
+        }
     })
 
     // Create the default stream
-    const stream = await client.getOrCreateStream({
-        id: `${await client.getAddress()}/light-node-js-example`
+    const stream = await client.createStream({
+        id: `${await client.getAddress()}/${Date.now()}`
+    })
+
+
+    const sub = await client.subscribe({stream: stream.id}, (message) => {
+        console.log('client.subscribe:', message)
     })
     
-    setInterval(async () => {
-        const message = { 
-            type: 'client:publish',
+    setInterval(() => {
+        stream.publish({ 
+            type: 'stream:publish',
             ts: Date.now(), 
-        } 
-        await client.publish(stream, message)
-        console.log('Sent successfully: ', message)
+        })
     }, 1000)
+
 }
 
 main()

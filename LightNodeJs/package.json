@@ -15,12 +15,12 @@
     "getStream": "node src/getStream.js",
     "getOrCreateStream": "node src/getOrCreateStream.js",
     "publish": "node src/publish.js",
-    "stream:addToStorageNode": "",
-    "stream:getPermissions": "",
-    "stream:hasPermissions": "",
-    "stream:grantPermission": "",
-    "stream:revokePermission": "",
-    "stream:publish": ""
+    "stream:addToStorageNode": "node src/stream/addToStorageNode.js",
+    "stream:getPermissions": "node src/stream/getPermissions.js",
+    "stream:hasPermission": "node src/stream/hasPermissions.js",
+    "stream:grantPermission": "node src/stream/grantPermission.js",
+    "stream:revokePermission": "node src/stream/revokePermission.js",
+    "stream:publish": "node src/stream/publish.js"
   },
   "dependencies": {
     "ethers": "^5.4.7",

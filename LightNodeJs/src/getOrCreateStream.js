@@ -18,7 +18,7 @@ const main = async () => {
 
     // Get or create the default stream
     const stream = await client.getOrCreateStream({
-        id: `${await client.getAddress()}/node-example-data`
+        id: `${await client.getAddress()}/${Date.now()}`
     })
     
     console.log(`Stream ${stream.id} fetched/created`)
