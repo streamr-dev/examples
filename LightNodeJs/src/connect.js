@@ -15,11 +15,9 @@ const main = async () => {
             privateKey: PRIVATE_KEY,
         },
     })
-    // You can manually connect/disconnect the client 
-    //await client.stop()
-    console.log('is client connected?', client.isOpen)
-    //await client.destroy()
-    console.log('is client connected?', client.isStopped)
+    console.log('is client destroyed?', client.isDestroyed())
+    await client.destroy()
+    console.log('is client destroyed?', client.isDestroyed())
 }
 
 main()
