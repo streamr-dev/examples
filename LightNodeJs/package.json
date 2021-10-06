@@ -1,0 +1,31 @@
+{
+  "name": "streamr-lightnodejs-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "connect": "node src/connect.js",
+    "subscribe": "node src/subscribe.js",
+    "unsubscribe": "node src/unsubscribe.js",
+    "unsubscribeAll": "node src/unsubscribeAll.js",
+    "getSubscriptions": "node src/getSubscriptions.js",
+    "resend": "node src/resend.js",
+    "createStream": "node src/createStream.js",
+    "getStream": "node src/getStream.js",
+    "getOrCreateStream": "node src/getOrCreateStream.js",
+    "publish": "node src/publish.js",
+    "stream:addToStorageNode": "",
+    "stream:getPermissions": "",
+    "stream:hasPermissions": "",
+    "stream:grantPermission": "",
+    "stream:revokePermission": "",
+    "stream:publish": ""
+  },
+  "dependencies": {
+    "ethers": "^5.4.7",
+    "streamr-client": "6.0.0-alpha.6"
+  },
+  "author": "",
+  "license": "ISC"
+}

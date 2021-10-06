@@ -7,13 +7,12 @@ from paho.mqtt import client as mqtt_client
 load_dotenv()
 
 # insert broker name, port number, and streamID
-broker = 'Text Tomato Render'
+broker = '143.215.112.253'
 port = 8082
-streamID = "nodes/0xDFbc82D80B743DC4Ab8dafBC9AfFc55f2245Fa7E"
+streamID = "0xf3E5A65851C3779f468c9EcB32E6f25D9D68601a/mqtt-python"
 
 # generate client ID with pub prefix randomly
 private_key = os.getenv("PRIVATE_KEY")
-
 
 def connect_mqtt():
     def on_connect(client, userdata, flags, rc):
