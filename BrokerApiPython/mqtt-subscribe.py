@@ -4,19 +4,12 @@ import time
 import os
 from dotenv import load_dotenv
 from paho.mqtt import client as mqtt_client
-from coincurve import PublicKey
-from sha3 import keccak_256
-from eth_keys import keys
-from eth_utils import decode_hex
-
 
 load_dotenv()
 
-# insert broker name, port number, and streamID
 broker = '143.215.112.253'
 port = 8082
 streamID = "0xDFbc82D80B743DC4Ab8dafBC9AfFc55f2245Fa7E/mqtt-python"
-
 # generate client ID with pub prefix randomly
 private_key = os.getenv("PRIVATE_KEY")
 
@@ -32,13 +25,12 @@ def connect_mqtt():
     client.connect(broker, port)
     return client
 
-
-def publish(client):
+def subscribe(client):
     msg_count = 0
     while True:
         time.sleep(1)
         msg = f"messages: {msg_count}"
-        result = client.publish(streamID, msg)
+        result = client.subscribe(streamID)
         # result: [0, 1]
         status = result[0]
         if status == 0:
@@ -47,11 +39,10 @@ def publish(client):
             print(f"Failed to send message to topic {streamID}")
         msg_count += 1
 
-
 def run():
     client = connect_mqtt()
     client.loop_start()
-    publish(client)
+    subscribe(client)
 
 
 if __name__ == '__main__':
