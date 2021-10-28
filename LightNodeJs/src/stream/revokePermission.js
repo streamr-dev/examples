@@ -1,8 +1,8 @@
+import { Wallet } from 'ethers'
 import { StreamrClient, StreamOperation } from 'streamr-client'
 import { config } from '../config.js'
 import { utils } from '../utils.js'
 
-// Error: NOT_FOUND: Request Streamr:StreamrClient:29892-0:Rest-0 to https://streamr.network/api/v1/streams/0x75a34e85d8aA9ff106740f60CB37fEFc2f0deAF9%2F1633515124025/permissions/stream_publish returned with error code 404. '{"code":"NOT_FOUND","message":"Permission not found"}'
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -24,26 +24,23 @@ const main = async () => {
     })
     
     // grant public permissions
-    await stream.grantPermission(StreamOperation.STREAM_DELETE, undefined)
-    await stream.grantPermission(StreamOperation.STREAM_EDIT, undefined)
-    await stream.grantPermission(StreamOperation.STREAM_GET, undefined)
-    await stream.grantPermission(StreamOperation.STREAM_PUBLISH, undefined)
-    await stream.grantPermission(StreamOperation.STREAM_SHARE, undefined)
-    await stream.grantPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
+    const deletePermission = await stream.grantPermission(StreamOperation.STREAM_DELETE, undefined)
+    const editPermission = await stream.grantPermission(StreamOperation.STREAM_EDIT, undefined)
+    const getPermission = await stream.grantPermission(StreamOperation.STREAM_GET, undefined)
+    const publishPermission = await stream.grantPermission(StreamOperation.STREAM_PUBLISH, undefined)
+    const sharePermission = await stream.grantPermission(StreamOperation.STREAM_SHARE, undefined)
+    const subscribePermission = await stream.grantPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
 
     let permissions = await stream.getPermissions()
     console.log('All permissions granted', permissions)
 
-    /* 
-        all of the revokePermission calls return this error:
-        Error: NOT_FOUND: Request Streamr:StreamrClient:29892-0:Rest-0 to https://streamr.network/api/v1/streams/0x75a34e85d8aA9ff106740f60CB37fEFc2f0deAF9%2F1633515124025/permissions/stream_publish returned with error code 404. '{"code":"NOT_FOUND","message":"Permission not found"}'
-    */
-    //await stream.revokePermission(StreamOperation.STREAM_DELETE, undefined)
-    //await stream.revokePermission(StreamOperation.STREAM_EDIT, undefined)
-    //await stream.revokePermission(StreamOperation.STREAM_GET, undefined)
-    //await stream.revokePermission(StreamOperation.STREAM_PUBLISH, undefined)
-    //await stream.revokePermission(StreamOperation.STREAM_SHARE, undefined)
-    //await stream.revokePermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
+    
+    await stream.revokePermission(deletePermission.id)
+    await stream.revokePermission(editPermission.id)
+    await stream.revokePermission(getPermission.id)
+    await stream.revokePermission(publishPermission.id)
+    await stream.revokePermission(sharePermission.id)
+    await stream.revokePermission(subscribePermission.id)
 
     permissions = await stream.getPermissions()
     console.log('All permissions revoked', permissions)

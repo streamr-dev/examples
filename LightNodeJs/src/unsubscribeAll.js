@@ -2,11 +2,6 @@ import { StreamrClient } from 'streamr-client'
 import { config } from './config.js'
 import { utils } from './utils.js'
 
-
-
-/*
-(node:40016) UnhandledPromiseRejectionWarning: TypeError: client.unsubscribeAll is not a function
-*/
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
 
@@ -28,7 +23,6 @@ const main = async () => {
     console.log('Stream fetched:', stream.id)
     const sub = await client.subscribe({ stream: stream.id })
     console.log(`Subscribed to stream ${stream.id}`)
-    //const streams = await client.unsubscribeAll()
     const streams = await client.removeAll()
     console.log(`Unsubscribed from all streams`)
     console.log(streams)
