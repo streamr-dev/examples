@@ -22,7 +22,6 @@
     "ethers": "^5.4.7",
     "mqtt": "^4.2.8",
     "streamr-broker": "^29.0.0",
-    "streamr-client": "6.0.0-alpha.6",
     "superagent": "^6.1.0",
     "ws": "^8.2.2"
   }
