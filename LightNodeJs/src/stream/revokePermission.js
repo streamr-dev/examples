@@ -1,8 +1,13 @@
-import { StreamrClient, StreamOperation } from 'streamr-client'
-import { config } from '../config.js'
-import { utils } from '../utils.js'
+const { StreamrClient, StreamOperation } = require('streamr-client').StreamrClient
+const utils = require('../utils.js')
+const config = require('../config.js')
 
-// Error: NOT_FOUND: Request Streamr:StreamrClient:29892-0:Rest-0 to https://streamr.network/api/v1/streams/0x75a34e85d8aA9ff106740f60CB37fEFc2f0deAF9%2F1633515124025/permissions/stream_publish returned with error code 404. '{"code":"NOT_FOUND","message":"Permission not found"}'
+
+/*
+Error: NOT_FOUND: Request Streamr:StreamrClient:29892-0:Rest-0 to 
+https://streamr.network/api/v1/streams/0x75a34e85d8aA9ff106740f60CB37fEFc2f0deAF9%2F1633515124025/permissions/stream_publish 
+returned with error code 404. '{"code":"NOT_FOUND","message":"Permission not found"}'
+*/
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -23,31 +28,23 @@ const main = async () => {
         id: `${await client.getAddress()}/${Date.now()}`
     })
     
-    // grant public permissions
-    await stream.grantPermission(StreamOperation.STREAM_DELETE, undefined)
-    await stream.grantPermission(StreamOperation.STREAM_EDIT, undefined)
-    await stream.grantPermission(StreamOperation.STREAM_GET, undefined)
-    await stream.grantPermission(StreamOperation.STREAM_PUBLISH, undefined)
-    await stream.grantPermission(StreamOperation.STREAM_SHARE, undefined)
+    // grant public permission
     await stream.grantPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
 
     let permissions = await stream.getPermissions()
-    console.log('All permissions granted', permissions)
-
-    /* 
-        all of the revokePermission calls return this error:
-        Error: NOT_FOUND: Request Streamr:StreamrClient:29892-0:Rest-0 to https://streamr.network/api/v1/streams/0x75a34e85d8aA9ff106740f60CB37fEFc2f0deAF9%2F1633515124025/permissions/stream_publish returned with error code 404. '{"code":"NOT_FOUND","message":"Permission not found"}'
-    */
-    //await stream.revokePermission(StreamOperation.STREAM_DELETE, undefined)
-    //await stream.revokePermission(StreamOperation.STREAM_EDIT, undefined)
-    //await stream.revokePermission(StreamOperation.STREAM_GET, undefined)
-    //await stream.revokePermission(StreamOperation.STREAM_PUBLISH, undefined)
-    //await stream.revokePermission(StreamOperation.STREAM_SHARE, undefined)
-    //await stream.revokePermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
-
+    console.log('Permission granted', permissions)
+    // revoke our last given permission
+    await stream.revokePermission(permissions[permissions.length - 1].id)
+    
     permissions = await stream.getPermissions()
-    console.log('All permissions revoked', permissions)
-    process.exit(0)
+    console.log('Permission revoked', permissions)
+    await client.destroy()     
+    return stream.id
 }
 
-main()
+
+if (utils.isRunFlagPresent(process.argv)){
+    main()
+}
+
+module.exports = main

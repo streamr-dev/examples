@@ -1,6 +1,6 @@
-import { StreamrClient } from 'streamr-client'
-import { config } from './config.js'
-import { utils } from './utils.js'
+const StreamrClient = require('streamr-client').StreamrClient
+const utils = require('./utils.js')
+const config = require('./config.js')
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -23,11 +23,16 @@ const main = async () => {
     
     console.log(`Stream ${stream.id} created`)
 
-
     // Now get the stream 
-    const stream2 = await client.getStream(stream.id)
-    console.log(`Stream ${stream2.id} fetched`)
-    process.exit(0)
+    const fetchedStream = await client.getStream(stream.id)
+    console.log(`Stream ${fetchedStream.id} fetched`)
+    await client.destroy()
+    return stream.id
 }
 
-main()
+
+if (utils.isRunFlagPresent(process.argv)){
+    main()
+}
+
+module.exports = main

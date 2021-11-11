@@ -3,29 +3,32 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "connect": "node src/connect.js",
-    "subscribe": "node src/subscribe.js",
-    "unsubscribe": "node src/unsubscribe.js",
-    "unsubscribeAll": "node src/unsubscribeAll.js",
-    "getSubscriptions": "node src/getSubscriptions.js",
-    "resend": "node src/resend.js",
-    "createStream": "node src/createStream.js",
-    "getStream": "node src/getStream.js",
-    "getOrCreateStream": "node src/getOrCreateStream.js",
-    "publish": "node src/publish.js",
-    "stream:addToStorageNode": "node src/stream/addToStorageNode.js",
-    "stream:getPermissions": "node src/stream/getPermissions.js",
-    "stream:hasPermission": "node src/stream/hasPermissions.js",
-    "stream:grantPermission": "node src/stream/grantPermission.js",
-    "stream:revokePermission": "node src/stream/revokePermission.js",
-    "stream:publish": "node src/stream/publish.js"
+    "test": "jest",
+    "connect": "node src/connect.js --run",
+    "subscribe": "node src/subscribe.js --run",
+    "unsubscribe": "node src/unsubscribe.js --run",
+    "unsubscribeAll": "node src/unsubscribeAll.js --run",
+    "getSubscriptions": "node src/getSubscriptions.js --run",
+    "resend": "node src/resend.js --run",
+    "createStream": "node src/createStream.js --run",
+    "getStream": "node src/getStream.js --run",
+    "getOrCreateStream": "node src/getOrCreateStream.js --run",
+    "publish": "node src/publish.js --run",
+    "stream:addToStorageNode": "node src/stream/addToStorageNode.js --run",
+    "stream:getPermissions": "node src/stream/getPermissions.js --run",
+    "stream:hasPermission": "node src/stream/hasPermission.js --run",
+    "stream:grantPermission": "node src/stream/grantPermission.js --run",
+    "stream:revokePermission": "node src/stream/revokePermission.js --run",
+    "stream:publish": "node src/stream/publish.js --run"
   },
   "dependencies": {
     "ethers": "^5.4.7",
-    "streamr-client": "6.0.0-alpha.8"
+    "streamr-client": "6.0.0-alpha.17"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
 }

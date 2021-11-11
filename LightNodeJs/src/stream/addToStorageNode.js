@@ -1,8 +1,6 @@
-import { StreamrClient } from 'streamr-client'
-import { config } from '../config.js'
-import { utils } from '../utils.js'
-
-// Error: VALIDATION_ERROR: Request Streamr:StreamrClient:27146-0:Rest-0 to https://streamr.network/api/v1/streams/0x75a34e85d8aA9ff106740f60CB37fEFc2f0deAF9%2F1633514146659/storageNodes returned with error code 422. '{"code":"VALIDATION_ERROR","message":"Invalid address:  (validator.invalid)"}'
+const { StorageNode, StreamrClient } = require('streamr-client').StreamrClient
+const utils = require('../utils.js')
+const config = require('../config.js')
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -20,18 +18,20 @@ const main = async () => {
 
     // Create the default stream
     const stream = await client.createStream({
-        id: `${await client.getAddress()}/light-node-js-example`
+        id: `${await client.getAddress()}/light-node-js-example/${Date.now()}`
     })
     
     console.log(`Stream ${stream.id} created`)
 
-    await stream.addToStorageNode({
-        address: '0x31546eEA76F2B2b3C5cC06B1c93601dc35c9D916',
-        url: 'https://testnet2.streamr.network:8001'
-    })
+    await stream.addToStorageNode(StorageNode.STREAMR_GERMANY)
 
     console.log('Stream added to storage node')
-    process.exit(0)
+    await client.destroy()
+    return stream.id
 }
 
-main()
+if (utils.isRunFlagPresent(process.argv)){
+    main()
+}
+
+module.exports = main

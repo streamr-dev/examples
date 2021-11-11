@@ -1,8 +1,9 @@
-import { StreamrClient } from 'streamr-client'
-import { config } from './config.js'
-import { utils } from './utils.js'
+const StreamrClient = require('streamr-client').StreamrClient
+const utils = require('./utils.js')
+const config = require('./config.js')
 
 const main = async () => {
+    /*
     const PRIVATE_KEY = config.privateKey
 
     if (!utils.isValidPrivateKey(PRIVATE_KEY)) {
@@ -13,10 +14,6 @@ const main = async () => {
     const client = new StreamrClient({
         auth: {
             privateKey: PRIVATE_KEY,
-        },
-        storageNode: {
-            address: '0x31546eEA76F2B2b3C5cC06B1c93601dc35c9D916',
-            url: 'https://testnet2.streamr.network:8001'
         }
     })
 
@@ -37,8 +34,13 @@ const main = async () => {
         (message) => {
             // Do something with the messages as they are received
             console.log(JSON.stringify(message))
-        },
-    )
+        }
+    )*/
 }
 
-main()
+
+if (utils.isRunFlagPresent(process.argv)){
+    main()
+}
+
+module.exports = main

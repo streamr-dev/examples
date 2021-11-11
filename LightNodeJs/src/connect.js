@@ -1,6 +1,6 @@
-import { StreamrClient } from 'streamr-client'
-import { utils }from './utils.js'
-import { config } from './config.js'
+const StreamrClient = require('streamr-client').StreamrClient
+const utils = require('./utils.js')
+const config = require('./config.js')
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -15,9 +15,14 @@ const main = async () => {
             privateKey: PRIVATE_KEY,
         },
     })
-    console.log('is client destroyed?', client.isDestroyed())
+    console.log('streamr client connected')
+    console.log(`is client destroyed? ${client.isDestroyed() ? 'yes' : 'no'}`)
     await client.destroy()
-    console.log('is client destroyed?', client.isDestroyed())
+    console.log(`is client destroyed? ${client.isDestroyed() ? 'yes' : 'no'}`)
 }
 
-main()
+if (utils.isRunFlagPresent(process.argv)){
+    main()
+}
+
+module.exports = main

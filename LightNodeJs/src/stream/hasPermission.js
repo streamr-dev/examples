@@ -1,6 +1,6 @@
-import { StreamrClient, StreamOperation } from 'streamr-client'
-import { config } from '../config.js'
-import { utils } from '../utils.js'
+const { StreamOperation, StreamrClient } = require('streamr-client').StreamrClient
+const utils = require('../utils.js')
+const config = require('../config.js')
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -24,13 +24,19 @@ const main = async () => {
     console.log(`Stream ${stream.id} created`)
     // grant public permissions for subscribe
     let hasPermission = await stream.hasPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
-    console.log('hasPermission?', hasPermission)
+    console.log(`hasPermission? ${hasPermission ? 'yes' : 'no'}`)
 
     await stream.grantPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
     hasPermission = await stream.hasPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
 
-    console.log('hasPermission?', hasPermission)
-    process.exit(0)
+    console.log(`hasPermission? ${hasPermission ? 'yes' : 'no'}`)
+    await client.destroy()
+    return stream.id
 }
 
-main()
+if (utils.isRunFlagPresent(process.argv)){
+    main()
+}
+
+module.exports = main
+

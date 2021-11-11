@@ -1,10 +1,7 @@
-import { StreamrClient } from 'streamr-client'
-import { config } from './config.js'
-import { utils } from './utils.js'
+const StreamrClient = require('streamr-client').StreamrClient
+const utils = require('./utils.js')
+const config = require('./config.js')
 
-const onMessage = (message) => {
-    console.log(JSON.stringify(message))
-}
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
 
@@ -18,16 +15,26 @@ const main = async () => {
             privateKey: PRIVATE_KEY,
         },
     })
+    console.log('client created')
 
     // Create the default stream
     const stream = await client.getOrCreateStream({
         id: `${await client.getAddress()}/light-node-js-example`
     })
 
-    const sub = await client.subscribe(
+    const subscription = await client.subscribe(
         { stream: stream.id },
-        onMessage
+        (message) => {
+            console.log(JSON.stringify(message))
+        }
     )
+    console.log('subscription created', subscription)
+    return {client, subscription}
 }
 
-main()
+
+if (utils.isRunFlagPresent(process.argv)){
+    main()
+}
+
+module.exports = main

@@ -1,6 +1,6 @@
-import { StreamrClient } from 'streamr-client'
-import { config } from './config.js'
-import { utils } from './utils.js'
+const StreamrClient = require('streamr-client').StreamrClient
+const utils = require('./utils.js')
+const config = require('./config.js')
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -25,7 +25,12 @@ const main = async () => {
     const subs = client.getSubscriptions()
     console.log('subscriptions', subs)
     await client.destroy()
-    process.exit(0)
+    return subs
 }
 
-main()
+
+if (utils.isRunFlagPresent(process.argv)){
+    main()
+}
+
+module.exports = main

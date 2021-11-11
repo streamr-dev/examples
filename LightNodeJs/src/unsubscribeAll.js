@@ -1,8 +1,6 @@
-import { StreamrClient } from 'streamr-client'
-import { config } from './config.js'
-import { utils } from './utils.js'
-
-
+const StreamrClient = require('streamr-client').StreamrClient
+const utils = require('./utils.js')
+const config = require('./config.js')
 
 /*
 (node:40016) UnhandledPromiseRejectionWarning: TypeError: client.unsubscribeAll is not a function
@@ -32,7 +30,12 @@ const main = async () => {
     const streams = await client.removeAll()
     console.log(`Unsubscribed from all streams`)
     console.log(streams)
-    process.exit(0)
+    await client.destroy 
+    return stream.id
 }
 
-main()
+if (utils.isRunFlagPresent(process.argv)){
+    main()
+}
+
+module.exports = main

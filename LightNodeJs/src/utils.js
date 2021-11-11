@@ -1,8 +1,7 @@
-import { StreamrClient, StreamOperation } from 'streamr-client'
-import { Wallet } from 'ethers'
-import { config } from './config.js'
+const { Wallet } = require( 'ethers' )
+const config = require( './config.js' )
 
-export const utils = {
+module.exports = {
     isValidPrivateKey: (privateKey) => {
         try {
             new Wallet(privateKey)
@@ -12,36 +11,10 @@ export const utils = {
             return false
         }
     },
-/*
-    createStream: async (streamPath = '/node-example-data') => {
-        const stream = await client.getOrCreateStream({
-            id: `${await client.getAddress()}/${streamPath}`
-        })
 
-        // And ensure it is publically available
-        await stream.grantPermission(StreamOperation.STREAM_GET, undefined)
-        await stream.grantPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
-        await stream.grantPermission(StreamOperation.STREAM_PUBLISH, undefined)
-        return stream
-    },
-
-    createClient: async () => {
-        const PRIVATE_KEY = config.privateKey
-    
-        if (!utils.isValidPrivateKey(PRIVATE_KEY)) {
-            console.log('You need to register a Streamr account and get a Private Key before you can use this example.')
-            process.exit(1)
-        }
-        // Create the client using the validated private key
-        const client = new StreamrClient({
-            auth: {
-                privateKey: PRIVATE_KEY,
-            },
-        })
-    
-        // Get or create the default stream    
-        return client
-    }*/
-
+    isRunFlagPresent: (args) => {
+        args = args.slice(2)
+        return (args.length > 0 && args[0] === '--run')
+    }
 }
 
