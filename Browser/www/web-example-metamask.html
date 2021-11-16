@@ -36,14 +36,14 @@
         //   a Metamask popup should appear to sign the challenge.
         // The subsequent calls to this function should immediately create a stream without a Metamask popup by using
         //   the session token previously retrieved.
-        function createStream() {
-            client.createStream({
-                name: 'stream-name'
-            }).then((stream) => {
+        const createStream = async () => {
+            try {
+                const stream = await  client.createStream({id: `${await client.getAddress()}/${Date.now()}`})
+                
                 log(`Created stream with id: ${stream.id}`)
-            }).catch(e => {
+            } catch (e) {
                 log(`Error: ${e.stack}`)
-            })
+            }
         }
 
         // If you need to get the session token. Overall first call with the above function triggers a Metamask popup.

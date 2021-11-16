@@ -3,6 +3,11 @@
 This example demostrates how to use the Streamr Client with plain HTML. These examples use the web version of the Streamr JS client, pulled from the external [Unpkg service](https://unpkg.com/streamr-client).
 
 ## Setting Up
+You can install [live-server](https://github.com/tapio/live-server) and serve the `www` folder to run the examples locally with the following commands:
+```shell
+$ npm install
+$ npm start
+```
 
 ### Stream Publish web example
 
