@@ -20,7 +20,7 @@ describe('Client', () => {
         console.log = jest.fn()
     })
     
-    it ('should excercise the `connect` example', async () => {
+    it ('should exercise the `connect` example', async () => {
         const res = await connect()
         expectConsoleLogs([
             'streamr client connected',
@@ -29,21 +29,21 @@ describe('Client', () => {
         ])
     })
 
-    it ('should excercise the `createStream` example', async () => {
+    it ('should exercise the `createStream` example', async () => {
         const streamId = await createStream()
         expectConsoleLogs([
             `Stream ${streamId} created`
         ])
     })
 
-    it ('should excercise the `getOrCreateStream` example', async () => {
+    it ('should exercise the `getOrCreateStream` example', async () => {
         const streamId = await getOrCreateStream()
         expectConsoleLogs([
             `Stream ${streamId} fetched/created`
         ])
     })
 
-    it ('should excercise the `getStream` example', async () => {
+    it ('should exercise the `getStream` example', async () => {
         const streamId = await getStream()
         expectConsoleLogs([
             `Stream ${streamId} created`,
@@ -51,7 +51,7 @@ describe('Client', () => {
         ])
     })
 
-    it ('should excercise the `getSubscriptions` example', async () => {
+    it ('should exercise the `getSubscriptions` example', async () => {
         const subscriptions = await getSubscriptions()
         expectConsoleLogs([
             'subscriptions'
@@ -59,7 +59,7 @@ describe('Client', () => {
         expect(subscriptions.length).toBe(1)
     })
 
-    it ('should excercise the `publish` example', async () => {
+    it ('should exercise the `publish` example', async () => {
         const { client, interval} = await publish()
         clearInterval(interval)
         expectConsoleLogs([
@@ -68,11 +68,11 @@ describe('Client', () => {
         await client.destroy()     
     })
 
-    it ('should excercise the `resend` example', async () => {
+    it ('should exercise the `resend` example', async () => {
         // PENDING
     })
 
-    it ('should excercise the `subscribe` example', async () => {
+    it ('should exercise the `subscribe` example', async () => {
         const { client, subscription} = await subscribe()
         expectConsoleLogs([
             'client created',
@@ -81,7 +81,7 @@ describe('Client', () => {
         await client.destroy()   
     })
 
-    it ('should excercise the `unsubscribe` example', async () => {
+    it ('should exercise the `unsubscribe` example', async () => {
         const streamId = await unsubscribe()
         expectConsoleLogs([
             'Stream fetched:',
@@ -90,7 +90,7 @@ describe('Client', () => {
         ])
     })
 
-    it ('should excercise the `unsubscribeAll` example', async () => {
+    it ('should exercise the `unsubscribeAll` example', async () => {
         const streamId = await unsubscribeAll()
         expectConsoleLogs([
             'Stream fetched:',

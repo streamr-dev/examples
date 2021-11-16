@@ -17,7 +17,7 @@ describe('Stream', () => {
         console.log = jest.fn()
     })
     
-    it ('should excercise the `addToStorageNode` example', async () => {
+    it ('should exercise the `addToStorageNode` example', async () => {
         const streamId = await addToStorageNode()
         expectConsoleLogs([
             `Stream ${streamId} created`,
@@ -25,7 +25,7 @@ describe('Stream', () => {
         ])
     })
 
-    it ('should excercise the `getPermissions` example', async () => {
+    it ('should exercise the `getPermissions` example', async () => {
         const {streamId, permissions} = await getPermissions()
         expect(permissions.length).toBe(6)
         expectConsoleLogs([
@@ -34,7 +34,7 @@ describe('Stream', () => {
         ])
     })
 
-    it ('should excercise the `grantPermission` example', async () => {
+    it ('should exercise the `grantPermission` example', async () => {
         const streamId = await grantPermission()
         expectConsoleLogs([
             `Stream ${streamId} created`,
@@ -42,7 +42,7 @@ describe('Stream', () => {
         ])
     })
 
-    it ('should excercise the `hasPermission` example', async () => {
+    it ('should exercise the `hasPermission` example', async () => {
         const streamId = await hasPermission()
         expectConsoleLogs([
             `Stream ${streamId} created`,
@@ -51,7 +51,7 @@ describe('Stream', () => {
         ])
     })
 
-    it ('should excercise the `publish` example', async () => {
+    it ('should exercise the `publish` example', async () => {
         const { client, interval} = await publish()
         clearInterval(interval)
         expectConsoleLogs([
@@ -60,7 +60,7 @@ describe('Stream', () => {
         await client.destroy()     
     })
 
-    it ('should excercise the `revokePermission` example', async () => {
+    it ('should exercise the `revokePermission` example', async () => {
         const streamId = await revokePermission()
         expectConsoleLogs([
             'Permission granted', 
