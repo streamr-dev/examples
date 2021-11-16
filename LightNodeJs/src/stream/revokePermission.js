@@ -2,13 +2,6 @@ const { StreamrClient, StreamOperation } = require('streamr-client').StreamrClie
 const utils = require('../utils.js')
 const config = require('../config.js')
 
-
-/*
-Error: NOT_FOUND: Request Streamr:StreamrClient:29892-0:Rest-0 to 
-https://streamr.network/api/v1/streams/0x75a34e85d8aA9ff106740f60CB37fEFc2f0deAF9%2F1633515124025/permissions/stream_publish 
-returned with error code 404. '{"code":"NOT_FOUND","message":"Permission not found"}'
-*/
-
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
 

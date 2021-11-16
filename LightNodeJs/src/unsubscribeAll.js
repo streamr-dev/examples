@@ -26,7 +26,6 @@ const main = async () => {
     console.log('Stream fetched:', stream.id)
     const sub = await client.subscribe({ stream: stream.id })
     console.log(`Subscribed to stream ${stream.id}`)
-    //const streams = await client.unsubscribeAll()
     const streams = await client.removeAll()
     console.log(`Unsubscribed from all streams`)
     console.log(streams)
