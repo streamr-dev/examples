@@ -1,22 +1,23 @@
-const HttpApiPublish = require('../src/http-api-publish')
-const BrokerConfig = require('../src/config-api-key.json')
+const HttpPublish = require('../src/http-publish')
+const BrokerConfig = require('../src/config.json')
+const { expectConsoleLogs, startBroker} = require('./util')
 
-const expectConsoleLogs = (logs) => {
-    // only evaluates the first element of the console log, if given comma-separated
-    for (let i = 0; i < logs.length; i++){
-        expect(console.log.mock.calls[i][0]).toBe(logs[i])
-    }
-}
+describe('HTTP:Publish', () => {
+    let broker
+    beforeAll(async () => {
+        broker = await startBroker(BrokerConfig)
+    }, 5 * 1000)
 
-describe('HTTP:Api-Key', () => {
-    console.log('REMEMBER TO RUN `$ npm start broker:start-api-key` before launching the tests')
+    afterAll(async () => {
+        await broker.stop()
+    })
 
     beforeEach (() => {
         console.log = jest.fn()
     })
     
-    it ('should excercise the `publish` example', async () => {
-        const {interval, httpResponse} = await HttpApiPublish()
+    it ('should exercise the `publish` example', async () => {
+        const {interval, httpResponse} = await HttpPublish()
         expectConsoleLogs([
             'Sent successfully: '
         ])

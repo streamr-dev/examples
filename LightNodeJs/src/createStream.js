@@ -1,4 +1,5 @@
-const StreamrClient = require('streamr-client').StreamrClient
+//const StreamrClient = require('streamr-client').StreamrClient
+const { StreamOperation, StreamrClient } = require('streamr-client')
 const utils = require('./utils.js')
 const config = require('./config.js')
 
@@ -20,7 +21,7 @@ const main = async () => {
     const stream = await client.createStream({
         id: `${await client.getAddress()}/${Date.now()}`
     })
-    
+
     console.log(`Stream ${stream.id} created`)
     await client.destroy()
     return stream.id

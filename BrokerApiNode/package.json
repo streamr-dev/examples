@@ -1,7 +1,7 @@
 {
   "name": "streamr-client-node-example",
   "version": "0.0.1",
-  "description": "Using streamr-client in node",
+  "description": "Using broker APIs in node",
   "main": "node.js",
   "scripts": {
     "test": "jest",

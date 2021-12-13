@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --runInBand",
     "connect": "node src/connect.js --run",
     "subscribe": "node src/subscribe.js --run",
     "unsubscribe": "node src/unsubscribe.js --run",
@@ -23,11 +23,12 @@
     "stream:publish": "node src/stream/publish.js --run",
     "enc:create": "node src/encryption/create.js --run",
     "enc:subscribe": "node src/encryption/subscribe.js --run",
-    "enc:publish": "node src/encryption/publish.js --run"
+    "enc:publish": "node src/encryption/publish.js --run",
+    "anon:subscribe": "node src/anon/subscribe.js --run"
   },
   "dependencies": {
     "ethers": "^5.4.7",
-    "streamr-client": "6.0.0-alpha.17"
+    "streamr-client": "6.0.0-alpha.19"
   },
   "author": "",
   "license": "ISC",

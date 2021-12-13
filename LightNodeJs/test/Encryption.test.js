@@ -25,7 +25,8 @@ describe('Client', () => {
         const { client, interval} = await publish()
         clearInterval(interval)
         expectConsoleLogs([
-            'Sent successfully: '
+            'Sent successfully: ',
+            'encrypted message:'
         ])   
         await client.destroy()     
     })

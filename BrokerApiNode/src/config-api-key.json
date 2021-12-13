@@ -1,7 +1,7 @@
 {
     "ethereumPrivateKey": "0x1c4343df92f5370208232782c373fa691c3543bdf4c40adfd406c87103b18fc2",
     "network": {
-      "name": "example-node",
+      "name": "example-node-auth",
       "trackers": [
         {
           "id": "0xFBB6066c44bc8132bA794C73f58F391273E3bdA1",
@@ -70,25 +70,20 @@
       ]
     },
     "plugins": {
-      "legacyWebsocket": {},
-      "metrics": {
-        "consoleAndPM2IntervalInSeconds": 0,
-        "nodeMetrics": {
-          "storageNode": "0x31546eEA76F2B2b3C5cC06B1c93601dc35c9D916",
-          "client": {
-            "wsUrl": "ws://127.0.0.1:8082/api/v1/ws",
-            "httpUrl": "https://streamr.network/api/v1"
-          }
-        }
+      "websocket": {
+        "port": 7071
       },
-      "websocket": {},
-      "mqtt": {},
+      "mqtt": {
+        "port": 7072
+      },
       "publishHttp": {}
     },
     "apiAuthentication": {
         "keys": [
            "MTgzYTM3NzVmOTIzNDA2NThiMjEwZDJhYzE1MjcyNTU"
         ]
-    }
-    
+    },
+    "httpServer": {
+      "port": 7073
+    }    
 }

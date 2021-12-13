@@ -11,7 +11,7 @@ const main = async () => {
         try {
             const address = new Wallet(PRIVATE_KEY).address
             const stream_id = encodeURIComponent(`${address}/node-example-data`)
-            const url = `http://localhost:7171/streams/${stream_id}`
+            const url = `http://localhost:7073/streams/${stream_id}`
         
             const interval = setInterval(async () => {
                 const message = { 

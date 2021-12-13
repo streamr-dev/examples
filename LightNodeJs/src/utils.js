@@ -4,7 +4,7 @@ const config = require( './config.js' )
 module.exports = {
     isValidPrivateKey: (privateKey) => {
         try {
-            new Wallet(privateKey)
+	    const w = new Wallet(privateKey)
             return true
         } catch (e){
             console.error(e)

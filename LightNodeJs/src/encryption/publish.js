@@ -21,8 +21,8 @@ const main = async () => {
 
             // Create the default stream
             const stream = await client.getOrCreateStream({
-                id: `${await client.getAddress()}/example-encryption`,
-                requiredEncryptedData: true
+                id: `${await client.getAddress()}/encryption-example`,
+                requireEncryptedData: true
             })
             
             const interval = setInterval(async () => {
@@ -30,8 +30,10 @@ const main = async () => {
                     type: 'client:publish',
                     ts: Date.now(), 
                 } 
-                await client.publish(stream, message)
+                const res = await client.publish(stream.id, message)
                 console.log('Sent successfully: ', message)
+                // you can check that the message is encrypted 
+                console.log('encrypted message:', res.serializedContent)
                 resolve({ client, interval})
             }, 1000)
 

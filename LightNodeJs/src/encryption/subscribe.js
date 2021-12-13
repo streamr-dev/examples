@@ -19,8 +19,8 @@ const main = async () => {
 
     // Create the default stream
     const stream = await client.getOrCreateStream({
-        id: `${await client.getAddress()}/example-encryption`,
-        requiredEncryptedData: true
+        id: `${await client.getAddress()}/encryption-example`,
+        requireEncryptedData: true
     })
     
     const subscription = await client.subscribe(

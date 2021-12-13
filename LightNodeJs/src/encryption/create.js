@@ -19,7 +19,7 @@ const main = async () => {
     // Create the default stream
     const stream = await client.createStream({
         id: `${await client.getAddress()}/${Date.now()}`,
-        requiredEncryptedData: true
+        requireEncryptedData: true
     })
     
     console.log('Encrypted stream created', stream.id)
