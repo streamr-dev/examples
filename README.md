@@ -7,15 +7,10 @@
 # Streamr code examples
 [![Discord Chat](https://img.shields.io/discord/801574432350928907.svg?label=Discord&logo=Discord&colorB=7289da)](https://discord.gg/FVtAph9cvz)
 
-## Using the Streamr Java Client in Android
-Example for setting up publishing and subscribing threads for Android.
-
-https://github.com/streamr-dev/examples/tree/master/AndroidJavaClient
-
 ## Raspberry Pi CPU usage stream
 This simple node script first reads through the RPi system to get the CPU usage.
 
-https://github.com/streamr-dev/examples/tree/master/RaspberryPiClient
+https://github.com/streamr-dev/examples/tree/master/RaspberryPi
 
 ---
 
@@ -31,7 +26,7 @@ We strive to achieve our vision of a decentralized data economy. The Data Fund i
 - Roadmap https://streamr.network/roadmap
 - Whitepaper https://streamr.network/whitepaper
 - Network Whitepaper https://streamr.network/network-whitepaper
-- Dev Docs https://streamr.network/docs/introduction
+- Dev Docs https://streamr.network/docs
 - Blog https://blog.streamr.network
 - Twitter https://twitter.com/streamr
 - GitHub https://github.com/streamr-dev
