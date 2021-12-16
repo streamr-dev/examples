@@ -1,5 +1,9 @@
 {
-    "ethereumPrivateKey": "0x1c4343df92f5370208232782c373fa691c3543bdf4c40adfd406c87103b18fc2",
+  "client": {
+    "auth": {
+      "privateKey": "0x1c4343df92f5370208232782c373fa691c3543bdf4c40adfd406c87103b18fc2"
+    },
+    "restUrl": "https://streamr.network/api/v1",
     "network": {
       "name": "example-node-no-auth",
       "trackers": [
@@ -54,31 +58,46 @@
           "http": "https://testnet4.streamr.network:30405"
         }
       ],
-      "location": null,
-      "stun": "stun:stun.streamr.network:5349",
-      "turn": null
+      "id": "0xd35ccb56Cc6E97a2428dc7aB9bc7b18E39C74f6f"
     },
-    "generateSessionId": false,
-    "streamrUrl": "https://streamr.network",
-    "streamrAddress": "0xf3E5A65851C3779f468c9EcB32E6f25D9D68601a",
-    "storageNodeConfig": {
-      "registry": [
-        {
-          "address": "0x31546eEA76F2B2b3C5cC06B1c93601dc35c9D916",
-          "url": "https://testnet2.streamr.network:8001"
+    "storageNodeRegistry": [
+      {
+        "address": "0x31546eEA76F2B2b3C5cC06B1c93601dc35c9D916",
+        "url": "https://testnet2.streamr.network:8001"
+      }
+    ],
+    "stunUrls": [
+      "stun:stun.streamr.network:5349"
+    ]
+  },
+  "plugins": {
+    "testnetMiner": {
+      "rewardStreamIds": [
+        "streamr.eth/brubeck-testnet/rewards/5hhb49",
+        "streamr.eth/brubeck-testnet/rewards/95hc37",
+        "streamr.eth/brubeck-testnet/rewards/12ab22",
+        "streamr.eth/brubeck-testnet/rewards/z15g13",
+        "streamr.eth/brubeck-testnet/rewards/111249",
+        "streamr.eth/brubeck-testnet/rewards/0g2jha",
+        "streamr.eth/brubeck-testnet/rewards/fijka2",
+        "streamr.eth/brubeck-testnet/rewards/91ab49",
+        "streamr.eth/brubeck-testnet/rewards/giab22",
+        "streamr.eth/brubeck-testnet/rewards/25kpf4"
+      ],
+      "claimServerUrl": "http://testnet1.streamr.network:3011",
+      "stunServerHost": "stun.sipgate.net"
+    },
+    "metrics": {
+      "consoleAndPM2IntervalInSeconds": 0,
+      "nodeMetrics": {
+        "storageNode": "0x31546eEA76F2B2b3C5cC06B1c93601dc35c9D916",
+        "client": {
+          "wsUrl": "ws://127.0.0.1:8082/api/v1/ws",
+          "httpUrl": "https://streamr.network/api/v1"
         }
-      ]
+      }
     },
-    "plugins": {
-      "websocket": {
-        "port": 9091
-      },
-      "mqtt": {
-        "port": 9092
-      },
-      "publishHttp": {}
-    },
-    "httpServer": {
-      "port": 9093
-    }
+    "websocket": {},
+    "publishHttp": {}
+  }
 }
