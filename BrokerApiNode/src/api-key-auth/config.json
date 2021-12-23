@@ -5,7 +5,7 @@
     },
     "restUrl": "https://streamr.network/api/v1",
     "network": {
-      "name": "example-node",
+      "name": "miner-node",
       "trackers": [
         {
           "id": "0xFBB6066c44bc8132bA794C73f58F391273E3bdA1",
@@ -58,9 +58,6 @@
           "http": "https://testnet4.streamr.network:30405"
         }
       ],
-      "stunUrls": [
-        "stun:stun.streamr.network:5349"
-      ],
       "id": "0x75a34e85d8aA9ff106740f60CB37fEFc2f0deAF9"
     },
     "storageNodeRegistry": [
@@ -72,15 +69,46 @@
   },
   "plugins": {
     "legacyWebsocket": {},
+    "testnetMiner": {
+      "rewardStreamIds": [
+        "streamr.eth/brubeck-testnet/rewards/5hhb49",
+        "streamr.eth/brubeck-testnet/rewards/95hc37",
+        "streamr.eth/brubeck-testnet/rewards/12ab22",
+        "streamr.eth/brubeck-testnet/rewards/z15g13",
+        "streamr.eth/brubeck-testnet/rewards/111249",
+        "streamr.eth/brubeck-testnet/rewards/0g2jha",
+        "streamr.eth/brubeck-testnet/rewards/fijka2",
+        "streamr.eth/brubeck-testnet/rewards/91ab49",
+        "streamr.eth/brubeck-testnet/rewards/giab22",
+        "streamr.eth/brubeck-testnet/rewards/25kpf4"
+      ],
+      "claimServerUrl": "http://testnet1.streamr.network:3011",
+      "stunServerHost": "stun.sipgate.net"
+    },
+    "metrics": {
+      "consoleAndPM2IntervalInSeconds": 0,
+      "nodeMetrics": {
+        "storageNode": "0x31546eEA76F2B2b3C5cC06B1c93601dc35c9D916",
+        "client": {
+          "wsUrl": "ws://127.0.0.1:8082/api/v1/ws",
+          "httpUrl": "https://streamr.network/api/v1"
+        }
+      }
+    },
     "websocket": {
-      "port": 9091
+      "port": 7071
     },
     "mqtt": {
-      "port": 9092
+      "port": 7072
     },
     "publishHttp": {}
   },
+  "apiAuthentication": {
+    "keys": [
+      "MTgzYTM3NzVmOTIzNDA2NThiMjEwZDJhYzE1MjcyNTU"
+    ]
+  },
   "httpServer": {
-    "port": 9093
+    "port": 7073
   }
 }
