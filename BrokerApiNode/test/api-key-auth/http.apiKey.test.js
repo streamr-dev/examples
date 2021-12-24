@@ -1,8 +1,14 @@
-const HttpApiPublish = require('../src/http-api-publish')
-const BrokerConfig = require('../src/config-api-key.json')
-const { expectConsoleLogs, startBroker, wait} = require('./util')
+const HttpApiPublish = require('../src/api-key-auth/http-publish')
+let BrokerConfig = require('../src/api-key-auth/config.json')
+const { expectConsoleLogs, startBroker, wait} = require('../util')
 
-describe('HTTP:Api-Key:Publish', () => {
+BrokerConfig = assignPluginPorts(BrokerConfig, {
+    http: 6021,
+    websocket: 6022,
+    mqtt: 6023,
+})
+
+describe('HTTP:Api-Key', () => {
     let broker
 
     beforeAll(async () => {
@@ -18,7 +24,7 @@ describe('HTTP:Api-Key:Publish', () => {
     })
     
     it ('should exercise the `publish` example', async () => {
-        const {interval, httpResponse} = await HttpApiPublish()
+        const {interval, httpResponse} = await HttpPublish(BrokerConfig.httpServer.port)
         expectConsoleLogs([
             'Sent successfully: '
         ])

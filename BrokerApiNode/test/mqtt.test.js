@@ -1,17 +1,16 @@
-const MqttApiPublish = require('../src/mqtt-api-publish')
-const MqttApiSubscribe = require('../src/mqtt-api-subscribe')
+const MqttApiPublish = require('../src/mqtt-publish')
+const MqttApiSubscribe = require('../src/mqtt-subscribe')
 
-let BrokerConfig = require('../src/config-api-key.json')
+let BrokerConfig = require('../src/config.json')
 const { expectConsoleLogs, startBroker, assignPluginPorts} = require('./util')
 
-describe('MQTT:Api-Key', () => {
+describe('MQTT', () => {
     let broker
 
     BrokerConfig = assignPluginPorts(BrokerConfig, {
-        http: 2021,
-        websocket: 2022,
-        mqtt: 2023,
-        
+        http: 4021,
+        websocket: 4022,
+        mqtt: 4023,
     })
 
     beforeAll(async () => {
@@ -36,7 +35,7 @@ describe('MQTT:Api-Key', () => {
     })
 
     it ('should exercise the `subscribe` example', async () => {
-        const {interval, httpResponse} = await MqttApiSubscribe()
+        const {interval, httpResponse} = await MqttApiSubscribe(BrokerConfig.plugins.mqtt.port)
         expectConsoleLogs([
             'Sent successfully: '
         ])

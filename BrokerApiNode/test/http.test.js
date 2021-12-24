@@ -1,8 +1,14 @@
 const HttpPublish = require('../src/http-publish')
-const BrokerConfig = require('../src/config.json')
-const { expectConsoleLogs, startBroker} = require('./util')
+let BrokerConfig = require('../src/config.json')
+const { expectConsoleLogs, startBroker, assignPluginPorts} = require('./util')
 
-describe('HTTP:Publish', () => {
+BrokerConfig = assignPluginPorts(BrokerConfig, {
+    http: 3021,
+    websocket: 3022,
+    mqtt: 3023,
+})
+
+describe('HTTP', () => {
     let broker
     beforeAll(async () => {
         broker = await startBroker(BrokerConfig)
@@ -17,7 +23,7 @@ describe('HTTP:Publish', () => {
     })
     
     it ('should exercise the `publish` example', async () => {
-        const {interval, httpResponse} = await HttpPublish()
+        const {interval, httpResponse} = await HttpPublish(BrokerConfig.httpServer.port)
         expectConsoleLogs([
             'Sent successfully: '
         ])
