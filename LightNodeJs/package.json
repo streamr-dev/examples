@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "ethers": "^5.4.7",
-    "streamr-client": "6.0.0-alpha.19"
+    "streamr-client": "6.0.0-alpha.26"
   },
   "author": "",
   "license": "ISC",

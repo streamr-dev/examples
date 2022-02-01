@@ -34,7 +34,7 @@ describe('Client', () => {
         expectConsoleLogs([
             `Stream ${streamId} created`
         ])
-    })
+    }).timeout(30 * 1000)
 
     it ('should exercise the `getOrCreateStream` example', async () => {
         const streamId = await getOrCreateStream()

@@ -1,4 +1,4 @@
-const { StreamOperation, StreamrClient } = require('streamr-client').StreamrClient
+const { StreamPermission, StreamrClient } = require('streamr-client').StreamrClient
 const utils = require('../utils.js')
 const config = require('../config.js')
 
@@ -20,14 +20,15 @@ const main = async () => {
     const stream = await client.createStream({
         id: `${await client.getAddress()}/${Date.now()}`
     })
-    
+
     console.log(`Stream ${stream.id} created`)
+    const { address } = StreamrClient.generateEthereumAccount()
     // grant public permissions for subscribe
-    let hasPermission = await stream.hasPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
+    let hasPermission = await stream.hasUserPermission(StreamPermission.SUBSCRIBE, address)
     console.log(`hasPermission? ${hasPermission ? 'yes' : 'no'}`)
 
-    await stream.grantPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
-    hasPermission = await stream.hasPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
+    await stream.grantUserPermission(StreamPermission.SUBSCRIBE, address)
+    hasPermission = await stream.hasUserPermission(StreamPermission.SUBSCRIBE, address)
 
     console.log(`hasPermission? ${hasPermission ? 'yes' : 'no'}`)
     await client.destroy()

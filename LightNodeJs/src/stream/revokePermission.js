@@ -1,4 +1,4 @@
-const { StreamrClient, StreamOperation } = require('streamr-client').StreamrClient
+const { StreamrClient, StreamPermission } = require('streamr-client').StreamrClient
 const utils = require('../utils.js')
 const config = require('../config.js')
 
@@ -22,13 +22,13 @@ const main = async () => {
     })
     
     // grant public permission
-    await stream.grantPermission(StreamOperation.STREAM_SUBSCRIBE, undefined)
-
+    await stream.grantPublicPermission(StreamPermission.SUBSCRIBE)
+    console.log('Granted public permission for subscribe')
     let permissions = await stream.getPermissions()
     console.log('Permission granted', permissions)
-    // revoke our last given permission
-    await stream.revokePermission(permissions[permissions.length - 1].id)
-    
+    // revoke the public permission
+    await stream.revokePublicPermission(StreamPermission.SUBSCRIBE)
+    console.log('Revoked public permission')
     permissions = await stream.getPermissions()
     console.log('Permission revoked', permissions)
     await client.destroy()     

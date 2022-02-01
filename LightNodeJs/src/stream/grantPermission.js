@@ -1,4 +1,4 @@
-const { StreamOperation, StreamrClient } = require('streamr-client').StreamrClient
+const { StreamrClient } = require('streamr-client').StreamrClient
 const utils = require('../utils.js')
 const config = require('../config.js')
 
@@ -22,15 +22,20 @@ const main = async () => {
     })
     
     console.log(`Stream ${stream.id} created`)
-    // grant public permissions
-    await stream.grantPermission(StreamOperation.STREAM_DELETE, undefined)
-    await stream.grantPermission(StreamOperation.STREAM_EDIT, undefined)
-    await stream.grantPermission(StreamOperation.STREAM_GET, undefined)
-    // or to a specific address
-    await stream.grantPermission(StreamOperation.STREAM_PUBLISH, '0x87a34e85d8aa9ff105740f60cb37fefc2f0deaff')
-    await stream.grantPermission(StreamOperation.STREAM_SHARE, '0x87a34e85d8aa9ff105740f60cb37fefc2f0deaff')
-    await stream.grantPermission(StreamOperation.STREAM_SUBSCRIBE, '0x87a34e85d8aa9ff105740f60cb37fefc2f0deaff')
 
+
+    const { address } = StreamrClient.generateEthereumAccount()
+
+    await stream.setPermissionsForUser(
+        address,
+        false, // edit
+        false, // delete
+        true, // publish
+        true, //subscribe
+        true // share
+    )
+    console.log('Permissions updated for stream', stream.id)
+   
     const permissions = await stream.getPermissions()
     console.log('Permissions', permissions)
     await client.destroy()

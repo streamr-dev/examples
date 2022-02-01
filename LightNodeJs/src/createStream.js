@@ -17,9 +17,11 @@ const main = async () => {
         },
     })
 
+    const streamId = `${await client.getAddress()}/${Date.now()}`
+
     // Create the default stream
     const stream = await client.createStream({
-        id: `${await client.getAddress()}/${Date.now()}`
+        id: streamId
     })
 
     console.log(`Stream ${stream.id} created`)
