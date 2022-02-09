@@ -1,7 +1,6 @@
-//const StreamrClient = require('streamr-client').StreamrClient
-const { StreamOperation, StreamrClient } = require('streamr-client')
-const utils = require('./utils.js')
-const config = require('./config.js')
+const { StreamrClient } = require('streamr-client').StreamrClient
+const utils = require('../utils.js')
+const config = require('../config.js')
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -14,21 +13,20 @@ const main = async () => {
     const client = new StreamrClient({
         auth: {
             privateKey: PRIVATE_KEY,
-        },
+        }
     })
-
-    const streamId = `${await client.getAddress()}/light-node-js-example/${Date.now()}`
 
     // Create the default stream
-    const stream = await client.createStream({
-        id: streamId
-    })
-
+    const stream = await client.getStream(`${await client.getAddress()}/light-node-js-example`)
+    
     console.log(`Stream ${stream.id} created`)
-    await client.destroy()
-    return stream.id
-}
 
+    const permissions = await stream.getUserPermissions(await client.getAddress())
+
+    console.log('Permissions', permissions)
+    await client.destroy()
+    return { permissions, streamId: stream.id }
+}
 
 if (utils.isRunFlagPresent(process.argv)){
     main()

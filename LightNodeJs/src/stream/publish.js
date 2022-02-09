@@ -20,7 +20,7 @@ const main = async () => {
 
             // Create the default stream
             const stream = await client.createStream({
-                id: `${await client.getAddress()}/${Date.now()}`
+                id: `${await client.getAddress()}/light-node-js-example`
             })
 
 

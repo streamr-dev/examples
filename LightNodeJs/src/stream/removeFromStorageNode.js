@@ -1,4 +1,4 @@
-const { StreamPermission, StreamrClient } = require('streamr-client').StreamrClient
+const { STREAMR_STORAGE_NODE_GERMANY, StreamrClient } = require('streamr-client').StreamrClient
 const utils = require('../utils.js')
 const config = require('../config.js')
 
@@ -18,19 +18,16 @@ const main = async () => {
 
     // Create the default stream
     const stream = await client.createStream({
-        id: `${await client.getAddress()}/${Date.now()}`
+        id: `${await client.getAddress()}/light-node-js-example/${Date.now()}`
     })
-
+    
     console.log(`Stream ${stream.id} created`)
-    const { address } = StreamrClient.generateEthereumAccount()
-    // grant public permissions for subscribe
-    let hasPermission = await stream.hasUserPermission(StreamPermission.SUBSCRIBE, address)
-    console.log(`hasPermission? ${hasPermission ? 'yes' : 'no'}`)
+    await stream.addToStorageNode(STREAMR_STORAGE_NODE_GERMANY)
 
-    await stream.grantUserPermission(StreamPermission.SUBSCRIBE, address)
-    hasPermission = await stream.hasUserPermission(StreamPermission.SUBSCRIBE, address)
+    console.log('Stream added to storage node')
 
-    console.log(`hasPermission? ${hasPermission ? 'yes' : 'no'}`)
+    await stream.removeFromStorageNode(STREAMR_STORAGE_NODE_GERMANY)
+    console.log('Stream removed from storage node')
     await client.destroy()
     return stream.id
 }
@@ -40,4 +37,3 @@ if (utils.isRunFlagPresent(process.argv)){
 }
 
 module.exports = main
-

@@ -1,6 +1,6 @@
-const StreamrClient = require('streamr-client').StreamrClient
-const utils = require('./utils.js')
-const config = require('./config.js')
+const { StreamrClient, StreamPermission } = require('streamr-client').StreamrClient
+const utils = require('../utils.js')
+const config = require('../config.js')
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -13,7 +13,7 @@ const main = async () => {
     const client = new StreamrClient({
         auth: {
             privateKey: PRIVATE_KEY,
-        },
+        }
     })
 
     // Create the default stream
@@ -21,12 +21,17 @@ const main = async () => {
         id: `${await client.getAddress()}/light-node-js-example/${Date.now()}`
     })
     
-    console.log(`Stream ${stream.id} created`)
-
-    // Now get the stream 
-    const fetchedStream = await client.getStream(stream.id)
-    console.log(`Stream ${fetchedStream.id} fetched`)
-    await client.destroy()
+    // grant public permission
+    await stream.grantPublicPermission(StreamPermission.SUBSCRIBE)
+    console.log('Granted public permission for subscribe')
+    let permissions = await stream.getPermissions()
+    console.log('Permission granted', permissions)
+    // revoke the public permission
+    await stream.revokeAllPublicPermissions()
+    console.log('Revoked public permission')
+    permissions = await stream.getPermissions()
+    console.log('Permission revoked', permissions)
+    await client.destroy()     
     return stream.id
 }
 

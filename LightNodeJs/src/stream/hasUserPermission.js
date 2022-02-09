@@ -1,6 +1,6 @@
-const StreamrClient = require('streamr-client').StreamrClient
-const utils = require('./utils.js')
-const config = require('./config.js')
+const { StreamPermission, StreamrClient } = require('streamr-client').StreamrClient
+const utils = require('../utils.js')
+const config = require('../config.js')
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -13,26 +13,31 @@ const main = async () => {
     const client = new StreamrClient({
         auth: {
             privateKey: PRIVATE_KEY,
-        },
+        }
     })
 
     // Create the default stream
     const stream = await client.createStream({
         id: `${await client.getAddress()}/light-node-js-example/${Date.now()}`
     })
-    
-    console.log(`Stream ${stream.id} created`)
 
-    // Now get the stream 
-    const fetchedStream = await client.getStream(stream.id)
-    console.log(`Stream ${fetchedStream.id} fetched`)
+    console.log(`Stream ${stream.id} created`)
+    const { address } = StreamrClient.generateEthereumAccount()
+    // grant public permissions for subscribe
+    let hasPermission = await stream.hasUserPermission(StreamPermission.SUBSCRIBE, address)
+    console.log(`hasPermission? ${hasPermission ? 'yes' : 'no'}`)
+
+    await stream.grantUserPermission(StreamPermission.SUBSCRIBE, address)
+    hasPermission = await stream.hasUserPermission(StreamPermission.SUBSCRIBE, address)
+
+    console.log(`hasPermission? ${hasPermission ? 'yes' : 'no'}`)
     await client.destroy()
     return stream.id
 }
-
 
 if (utils.isRunFlagPresent(process.argv)){
     main()
 }
 
 module.exports = main
+

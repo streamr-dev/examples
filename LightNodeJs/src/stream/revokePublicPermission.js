@@ -1,4 +1,4 @@
-const { STREAMR_STORAGE_NODE_GERMANY, StreamrClient } = require('streamr-client').StreamrClient
+const { StreamrClient, StreamPermission } = require('streamr-client').StreamrClient
 const utils = require('../utils.js')
 const config = require('../config.js')
 
@@ -21,13 +21,20 @@ const main = async () => {
         id: `${await client.getAddress()}/light-node-js-example/${Date.now()}`
     })
     
-    console.log(`Stream ${stream.id} created`)
-    await stream.addToStorageNode(STREAMR_STORAGE_NODE_GERMANY)
-
-    console.log('Stream added to storage node')
-    await client.destroy()
+    // grant public permission
+    await stream.grantPublicPermission(StreamPermission.SUBSCRIBE)
+    console.log('Granted public permission for subscribe')
+    let permissions = await stream.getPermissions()
+    console.log('Permission granted', permissions)
+    // revoke the public permission
+    await stream.revokePublicPermission(StreamPermission.SUBSCRIBE)
+    console.log('Revoked public permission')
+    permissions = await stream.getPermissions()
+    console.log('Permission revoked', permissions)
+    await client.destroy()     
     return stream.id
 }
+
 
 if (utils.isRunFlagPresent(process.argv)){
     main()

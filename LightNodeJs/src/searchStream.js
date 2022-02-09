@@ -1,7 +1,9 @@
-//const StreamrClient = require('streamr-client').StreamrClient
-const { StreamOperation, StreamrClient } = require('streamr-client')
+
+
+const { StreamrClient, StreamPermission } = require('streamr-client').StreamrClient
 const utils = require('./utils.js')
 const config = require('./config.js')
+
 
 const main = async () => {
     const PRIVATE_KEY = config.privateKey
@@ -17,16 +19,22 @@ const main = async () => {
         },
     })
 
-    const streamId = `${await client.getAddress()}/light-node-js-example/${Date.now()}`
-
-    // Create the default stream
-    const stream = await client.createStream({
-        id: streamId
+    const streams = client.searchStreams('light-node-js-example', {
+        user: await client.getAddress(),
+        //allOf?: StreamPermission[];
+        anyOf: [StreamPermission.SUBSCRIBE],
+        allowPublic: true
     })
 
-    console.log(`Stream ${stream.id} created`)
-    await client.destroy()
-    return stream.id
+    const foundStreams = []
+
+    for await (const stream of streams) {
+        foundStreams.push(stream.id)
+    }
+
+    console.log('streams found:', foundStreams.length, foundStreams)
+
+    return streams
 }
 
 

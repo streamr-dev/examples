@@ -17,29 +17,15 @@ const main = async () => {
     })
 
     // Create the default stream
-    const stream = await client.createStream({
-        id: `${await client.getAddress()}/${Date.now()}`
-    })
+    const stream = await client.getStream(`${await client.getAddress()}/light-node-js-example`)
     
     console.log(`Stream ${stream.id} created`)
 
+    const permissions = await stream.getMyPermissions()
 
-    const { address } = StreamrClient.generateEthereumAccount()
-
-    await stream.setPermissionsForUser(
-        address,
-        false, // edit
-        false, // delete
-        true, // publish
-        true, //subscribe
-        true // share
-    )
-    console.log('Permissions updated for stream', stream.id)
-   
-    const permissions = await stream.getPermissions()
     console.log('Permissions', permissions)
     await client.destroy()
-    return stream.id
+    return { permissions, streamId: stream.id }
 }
 
 if (utils.isRunFlagPresent(process.argv)){
