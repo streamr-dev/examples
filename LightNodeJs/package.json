@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --runInBand",
+    "prettier": "prettier --write src",
     "connect": "node src/connect.js --run",
     "subscribe": "node src/subscribe.js --run",
     "unsubscribe": "node src/unsubscribe.js --run",
@@ -37,7 +38,6 @@
     "stream:revokePublicPermission": "node src/stream/revokePublicPermission.js --run",
     "stream:revokeUserPermission": "node src/stream/revokeUserPermission.js --run",
     "stream:setPermissions": "node src/stream/setPermissions.js --run"
-
   },
   "dependencies": {
     "ethers": "^5.4.7",
@@ -46,6 +46,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^27.3.1"
+    "jest": "^27.3.1",
+    "prettier": "^2.5.1"
   }
 }

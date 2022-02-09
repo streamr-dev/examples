@@ -1,45 +1,44 @@
-
-
-const { StreamrClient, StreamPermission } = require('streamr-client').StreamrClient
-const utils = require('./utils.js')
-const config = require('./config.js')
-
+const { StreamrClient, StreamPermission } =
+  require("streamr-client").StreamrClient;
+const utils = require("./utils.js");
+const config = require("./config.js");
 
 const main = async () => {
-    const PRIVATE_KEY = config.privateKey
+  const PRIVATE_KEY = config.privateKey;
 
-    if (!utils.isValidPrivateKey(PRIVATE_KEY)) {
-        console.log('You need to register a Streamr account and get a Private Key before you can use this example.')
-        process.exit(1)
-    }
-    // Create the client using the validated private key
-    const client = new StreamrClient({
-        auth: {
-            privateKey: PRIVATE_KEY,
-        },
-    })
+  if (!utils.isValidPrivateKey(PRIVATE_KEY)) {
+    console.log(
+      "You need to register a Streamr account and get a Private Key before you can use this example."
+    );
+    process.exit(1);
+  }
+  // Create the client using the validated private key
+  const client = new StreamrClient({
+    auth: {
+      privateKey: PRIVATE_KEY,
+    },
+  });
 
-    const streams = client.searchStreams('light-node-js-example', {
-        user: await client.getAddress(),
-        //allOf?: StreamPermission[];
-        anyOf: [StreamPermission.SUBSCRIBE],
-        allowPublic: true
-    })
+  const streams = client.searchStreams("light-node-js-example", {
+    user: await client.getAddress(),
+    //allOf?: StreamPermission[];
+    anyOf: [StreamPermission.SUBSCRIBE],
+    allowPublic: true,
+  });
 
-    const foundStreams = []
+  const foundStreams = [];
 
-    for await (const stream of streams) {
-        foundStreams.push(stream.id)
-    }
+  for await (const stream of streams) {
+    foundStreams.push(stream.id);
+  }
 
-    console.log('streams found:', foundStreams.length, foundStreams)
+  console.log("streams found:", foundStreams.length, foundStreams);
 
-    return streams
+  return streams;
+};
+
+if (utils.isRunFlagPresent(process.argv)) {
+  main();
 }
 
-
-if (utils.isRunFlagPresent(process.argv)){
-    main()
-}
-
-module.exports = main
+module.exports = main;
