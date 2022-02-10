@@ -21,7 +21,7 @@
   "dependencies": {
     "ethers": "^5.4.7",
     "mqtt": "^4.2.8",
-    "streamr-broker": "^31.0.0-alpha.2",
+    "streamr-broker": "^31.0.0-beta.1",
     "superagent": "^6.1.0",
     "ws": "^8.2.2"
   },
