@@ -24,8 +24,6 @@ $ npm run broker:start-api-key
 In this setup you'll have to provide one of the registered apiKeys under `src/config-api-key.json` to be able to interact with the broker node. 
 
 ### HTTP Endpoint
-- [API Reference](https://api-explorer.streamr.com/)
-
 One can exercise the [`publish`](BrokerApiNode/src/http-publish.js) using the HTTP plugin on the broker. 
 
 
@@ -40,8 +38,6 @@ $ npm run http:api-key-publish
 ```
 
 ### WS Endpoint
-> Lacks apiKey examples for authorized brokers
-
 One can exercise the [`publish`](BrokerApiNode/src/ws-publish.js) and [`subscribe`](BrokerApiNode/src/ws-subscribe.js) using the WebSockets plugin on the broker. 
 
 In order to run the respective examples execute from your terminal:
@@ -61,8 +57,6 @@ $ npm run ws:api-key-publish
 - You must connect to different paths (`/streams/{streamId}/publish` vs `/streams/{streamId}/subscribe`) to interact with the network
 
 ### MQTT Endpoint
-> Lacks apiKey examples for authorized brokers
-
 One can exercise the [`publish`](BrokerApiNode/src/mqtt-publish.js) and [`subscribe`](BrokerApiNode/src/mqtt-subscribe.js) using the MQTT plugin on the broker. 
 
 In order to run the respective examples execute from your terminal:
