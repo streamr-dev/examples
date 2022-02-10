@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "Using broker APIs in node",
   "main": "node.js",
+  "engines": {
+    "npm": ">=6.0.0",
+    "node": ">=16.0.0"
+  },
+
   "scripts": {
     "test": "jest --runInBand",
     "prettier": "prettier --write src",
