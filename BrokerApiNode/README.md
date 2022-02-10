@@ -1,5 +1,5 @@
 # Broker APIs
-This example demostrates how to use the Streamr Broker API's from NodeJS. Node version 14/16 or higher is recommended.
+This example demostrates how to use the Streamr Broker API's from NodeJS. Node version 16 is recommended.
 
 ## Broker & SDKs
 - [Examples directory](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/)
