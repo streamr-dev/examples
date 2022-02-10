@@ -34,7 +34,7 @@ In order to run this repo's HTTP publish example, execute from your terminal:
 $ npm run http:publish
 ```
 
-If you are running your broker config with apiKeys you'll need to run:
+If you are running your broker config with `apiKeys`, you'll need to run:
 ```shell
 $ npm run http:api-key-publish
 ```
