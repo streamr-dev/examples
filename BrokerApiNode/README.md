@@ -57,7 +57,7 @@ $ npm run ws:api-key-publish
 ```
 
 **Things to remember**
-- Any ws client library can be used to interact with the broker
+- Any WebSocket client library can be used to interact with the broker
 - You must connect to different paths (`/streams/{streamId}/publish` vs `/streams/{streamId}/subscribe`) to interact with the network
 
 ### MQTT Endpoint
