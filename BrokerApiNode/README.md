@@ -2,7 +2,7 @@
 This example demostrates how to use the Streamr Broker API's from NodeJS. Node version 16 is recommended.
 
 ## Broker & SDKs
-- [Examples directory](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/)
+- [Examples directory](BrokerApiNode/src/)
 
 The Broker node ships with interface plugins, which can be used to publish and subscribe to data from applications over off-the-shelf protocols HTTP, Websocket, and MQTT.
 
@@ -13,7 +13,7 @@ The plugins expose ports and API endpoints which can be used to publish and subs
 $ npm install streamr-broker --global
 $ npm run broker:start
 ```
-The [default config](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/broker-config.json) has the HTTP, WS and MQTT plugins enabled by default to allow for SDK interaction.
+The [default config](NodeJs/broker-config.json) has the HTTP, WS and MQTT plugins enabled by default to allow for SDK interaction.
 
 You can also start the broker with the apiKey `0x1c4343df92f5370208232782c373fa691c3543bdf4c40adfd406c87103b18fc2` by running:
 
@@ -26,7 +26,7 @@ In this setup you'll have to provide one of the registered apiKeys under `src/co
 ### HTTP Endpoint
 - [API Reference](https://api-explorer.streamr.com/)
 
-One can exercise the [`publish`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/http-publish.js) using the HTTP plugin on the broker. 
+One can exercise the [`publish`](BrokerApiNode/src/http-publish.js) using the HTTP plugin on the broker. 
 
 
 In order to run this repo's HTTP publish example, execute from your terminal:
@@ -42,7 +42,7 @@ $ npm run http:api-key-publish
 ### WS Endpoint
 > Lacks apiKey examples for authorized brokers
 
-One can exercise the [`publish`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/ws-publish.js) and [`subscribe`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/ws-subscribe.js) using the WebSockets plugin on the broker. 
+One can exercise the [`publish`](BrokerApiNode/src/ws-publish.js) and [`subscribe`](BrokerApiNode/src/ws-subscribe.js) using the WebSockets plugin on the broker. 
 
 In order to run the respective examples execute from your terminal:
 ```shell
@@ -63,7 +63,7 @@ $ npm run ws:api-key-publish
 ### MQTT Endpoint
 > Lacks apiKey examples for authorized brokers
 
-One can exercise the [`publish`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/mqtt-publish.js) and [`subscribe`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/mqtt-subscribe.js) using the MQTT plugin on the broker. 
+One can exercise the [`publish`](BrokerApiNode/src/mqtt-publish.js) and [`subscribe`](BrokerApiNode/src/mqtt-subscribe.js) using the MQTT plugin on the broker. 
 
 In order to run the respective examples execute from your terminal:
 ```shell
