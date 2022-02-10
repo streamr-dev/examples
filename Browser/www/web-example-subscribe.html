@@ -2,7 +2,7 @@
 
 <head>
     <!-- For debug messages, include debug.js and set localStorage.debug = 'StreamrClient'. See from https://github.com/visionmedia/debug -->
-    <script src="https://unpkg.com/streamr-client@latest/streamr-client.web.js"></script>
+    <script src="https://unpkg.com/streamr-client@6.0.0-beta.1/streamr-client.web.js"></script>
     <style>
         html,
         body {
@@ -85,16 +85,10 @@
         const client = new StreamrClient()
 
         async function start() {
-            client.on('connected', function () {
-                logStatus('A connection has been established!')
-            })
-            client.on('disconnected', function () {
-                logStatus('Disconnected.')
-            })
-
+            const streamId = '0x734b1035c36202236b1c009efe2d5e27bed2ff9c/browser-example'
             // Subscribe to a stream
             const subscription = await client.subscribe({
-                stream: '7wa7APtlTq6EC5iTCBy6dw',
+                streamId,
                 // Resend the last few messages on connect
                 resend: {
                     last: MAX_ROWS,
@@ -106,20 +100,8 @@
 
             console.log(subscription)
 
-            logStatus('Subscribed to ' + subscription.streamId)
-            // Event binding examples
+            logStatus('Subscribed to ' + streamId)
 
-            subscription.on('resending', function () {
-                logStatus('Resending from ' + subscription.streamId)
-            })
-
-            subscription.on('resent', function () {
-                logStatus('Resend complete for ' + subscription.streamId)
-            })
-
-            subscription.on('no_resend', function () {
-                logStatus('Nothing to resend for ' + subscription.streamId)
-            })
         }
 
         start()
