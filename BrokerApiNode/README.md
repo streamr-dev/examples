@@ -29,7 +29,7 @@ In this setup you'll have to provide one of the registered apiKeys under `src/co
 One can exercise the [`publish`](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/http-publish.js) using the HTTP plugin on the broker. 
 
 
-In order to run the example execute from your terminal:
+In order to run this repo's HTTP publish example, execute from your terminal:
 ```shell
 $ npm run http:publish
 ```
