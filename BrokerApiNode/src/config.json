@@ -58,10 +58,8 @@
           "http": "https://brubeck4.streamr.network:30405"
         }
       ],
-      "stunUrls": [
-        "stun:stun.streamr.network:5349"
-      ],
-      "id": "0xE0786b21cA93Bd51Bd0e0b874511269EA2931CdA"
+      "stunUrls": ["stun:stun.streamr.network:5349"],
+      "id": "0x734b1035c36202236b1C009efe2D5e27bEd2ff9c"
     }
   },
   "plugins": {
@@ -94,11 +92,6 @@
       "port": 9092
     },
     "publishHttp": {}
-  },
-  "apiAuthentication": {
-    "keys": [
-      "NWM0ZWI5ZTMyYTJhNGQ1ZjgwNTk4ODA1Y2YzYWMxYTU"
-    ]
   },
   "httpServer": {
     "port": 9093

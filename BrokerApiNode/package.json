@@ -5,6 +5,7 @@
   "main": "node.js",
   "scripts": {
     "test": "jest --runInBand",
+    "prettier": "prettier --write src",
     "broker:start": "streamr-broker src/config.json",
     "broker:start-api-key": "streamr-broker src/api-key-auth/config.json",
     "http:publish": "node --experimental-json-modules src/http-publish.js --run",
@@ -26,6 +27,7 @@
     "ws": "^8.2.2"
   },
   "devDependencies": {
-    "jest": "^27.3.1"
+    "jest": "^27.3.1",
+    "prettier": "^2.5.1"
   }
 }
