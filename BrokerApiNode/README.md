@@ -8,9 +8,17 @@ The Broker node ships with interface plugins, which can be used to publish and s
 
 The plugins expose ports and API endpoints which can be used to publish and subscribe to data using the identity of the Broker node.
 
-### Broker setup
+### Global `streamr-broker` setup
 ```shell
 $ npm install streamr-broker --global
+$ streamr-broker-init
+# Start the broker 
+$ streamr-broker ~/.streamr/config/default.json
+```
+### Examples setup
+The repository will install `streamr-broker` locally
+```shell
+$ npm install
 $ npm run broker:start
 ```
 The [default config](NodeJs/broker-config.json) has the HTTP, WS and MQTT plugins enabled by default to allow for SDK interaction.
