@@ -4,7 +4,9 @@ This example demostrates how to use the Streamr Broker API's from NodeJS. Node v
 ## Broker & SDKs
 - [Examples directory](https://github.com/streamr-dev/examples/blob/ECODR-34-broker-and-client/NodeJs/src/broker/)
 
-The Broker acts as a relayer node from it's HTTP/WS/MQTT APIs into the Streamr Network
+The Broker node ships with interface plugins, which can be used to publish and subscribe to data from applications over off-the-shelf protocols HTTP, Websocket, and MQTT.
+
+The plugins expose ports and API endpoints which can be used to publish and subscribe to data using the identity of the Broker node.
 
 ### Broker setup
 ```shell
