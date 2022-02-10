@@ -4,10 +4,9 @@
   "description": "Using broker APIs in node",
   "main": "node.js",
   "engines": {
-    "npm": ">=6.0.0",
+    "npm": ">=8.0.0",
     "node": ">=16.0.0"
   },
-
   "scripts": {
     "test": "jest --runInBand",
     "prettier": "prettier --write src",
