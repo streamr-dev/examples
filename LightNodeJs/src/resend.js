@@ -49,6 +49,10 @@ const main = async () => {
       console.log(JSON.stringify(message));
     }
   );
+
+  sub.onResent(() => {
+    console.log('all messages resent')
+  })
 };
 
 if (utils.isRunFlagPresent(process.argv)) {
