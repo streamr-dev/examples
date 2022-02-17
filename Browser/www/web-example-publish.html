@@ -19,19 +19,19 @@
         const STREAM_ID = '0x734b1035c36202236b1c009efe2d5e27bed2ff9c/browser-example'
 
         // REPLACE THIS WITH YOUR PRIVATE KEY
-        const PRIVATE_KEY = '0xc06928b7f07babb92a8803ec82026e5a9ebd927beb56b6ccce0b428910d7268d'
+        const PrivateKey = '0xc06928b7f07babb92a8803ec82026e5a9ebd927beb56b6ccce0b428910d7268d'
 
         if (STREAM_ID === 'YOUR-STREAM-ID') {
             log('You need to register a Streamr account and get a Stream ID before you can use this example. Register and get from https://streamr.network/signup')
         }
 
-        if (PRIVATE_KEY === 'YOUR-PRIVATE-KEY') {
+        if (PrivateKey === 'YOUR-PRIVATE-KEY') {
             log('You need to register a Streamr account and get a Private Key before you can use this example. Register and get from https://streamr.network/signup')
         } else {
             // Create the client and give the private key to use by default
             client = new StreamrClient({
                 auth: {
-                    privateKey: PRIVATE_KEY,
+                    privateKey: PrivateKey,
                 }
             })
         }

@@ -1,33 +1,31 @@
 const { STREAMR_STORAGE_NODE_GERMANY, StreamrClient } =
-  require("streamr-client").StreamrClient;
+  require("streamr-client");
 const utils = require("../utils.js");
-const config = require("../config.js");
+const { PrivateKey } = require("../config.js");
 
 const main = async () => {
-  const PRIVATE_KEY = config.privateKey;
-
-  if (!utils.isValidPrivateKey(PRIVATE_KEY)) {
-    console.log(
-      "You need to register a Streamr account and get a Private Key before you can use this example."
-    );
-    process.exit(1);
-  }
+  utils.isValidPrivateKey(PrivateKey);
   // Create the client using the validated private key
   const client = new StreamrClient({
     auth: {
-      privateKey: PRIVATE_KEY,
+      privateKey: PrivateKey,
     },
   });
 
   // Create the default stream
-  const stream = await client.createStream({
-    id: `${await client.getAddress()}/light-node-js-example/${Date.now()}`,
+  const stream = await client.getOrCreateStream({
+    id: `/light-node-js-example/storage-node`,
   });
+  console.log('fetched/created stream', stream.id);
+  const storageNodes = await stream.getStorageNodes()
+  if (storageNodes.length === 0){
+    await stream.addToStorageNode(STREAMR_STORAGE_NODE_GERMANY);
+    console.log("Stream added to storage node");
+  } else {
+    console.log('stream was already in storage node')
+  }
 
-  console.log(`Stream ${stream.id} created`);
-  await stream.addToStorageNode(STREAMR_STORAGE_NODE_GERMANY);
 
-  console.log("Stream added to storage node");
   await client.destroy();
   return stream.id;
 };

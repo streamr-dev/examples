@@ -1,23 +1,21 @@
-const StreamrClient = require("streamr-client").StreamrClient;
+const StreamrClient = require("streamr-client");
 const utils = require("./utils.js");
-const config = require("./config.js");
+const { PrivateKey } = require("./config.js");
 
 const main = async () => {
-  const PRIVATE_KEY = config.privateKey;
+  utils.isValidPrivateKey(PrivateKey);
 
-  if (!utils.isValidPrivateKey(PRIVATE_KEY)) {
-    console.log(
-      "You need to register a Streamr account and get a Private Key before you can use this example."
-    );
-    process.exit(1);
-  }
   // Create the client using the validated private key
   const client = new StreamrClient({
     auth: {
-      privateKey: PRIVATE_KEY,
+      privateKey: PrivateKey,
     },
   });
-  console.log("streamr client connected");
+
+  console.log(
+    "streamr client connected with address",
+    await client.getAddress()
+  );
   console.log(`is client destroyed? ${client.isDestroyed() ? "yes" : "no"}`);
   await client.destroy();
   console.log(`is client destroyed? ${client.isDestroyed() ? "yes" : "no"}`);

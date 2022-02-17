@@ -1,23 +1,19 @@
 const { Wallet } = require("ethers");
-const config = require("./config.js");
-
+const { PrivateKey } = require("./config.js");
 module.exports = {
   isValidPrivateKey: (privateKey) => {
     try {
       const w = new Wallet(privateKey);
-      return true;
     } catch (e) {
-      console.error(e);
-      return false;
+      console.error(
+        "You need to provide a Private Key under /src/config.js before you can execute this example."
+      );
+      process.exit(1);
     }
   },
 
   isRunFlagPresent: (args) => {
     args = args.slice(2);
     return args.length > 0 && args[0] === "--run";
-  },
-
-  wait: (ms) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
   },
 };

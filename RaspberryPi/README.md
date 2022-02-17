@@ -13,7 +13,7 @@ Install dependencies using npm or yarn:
 
 This script requires an ethereum private key. You should create a `.env` file in the root directory and add this line:
 
-`ETHEREUM_PRIVATE_KEY=`
+`ETHEREUM_PrivateKey=`
 
 Paste your private key after the equals sign.
 

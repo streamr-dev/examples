@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const client = new StreamrClient({
   auth: {
-    privateKey: process.env.ETHEREUM_PRIVATE_KEY,
+    privateKey: process.env.ETHEREUM_PrivateKey,
   },
 });
 

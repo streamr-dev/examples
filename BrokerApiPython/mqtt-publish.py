@@ -18,7 +18,7 @@ port = 8082
 streamID = "0xDFbc82D80B743DC4Ab8dafBC9AfFc55f2245Fa7E/mqtt-python"
 
 # generate client ID with pub prefix randomly
-private_key = os.getenv("PRIVATE_KEY")
+PrivateKey = os.getenv("PrivateKey")
 
 def connect_mqtt():
     def on_connect(client, userdata, flags, rc):
@@ -27,7 +27,7 @@ def connect_mqtt():
         else:
             print("Failed to connect, return code %d\n", rc)
 
-    client = mqtt_client.Client(private_key)
+    client = mqtt_client.Client(PrivateKey)
     client.on_connect = on_connect
     client.connect(broker, port)
     return client
