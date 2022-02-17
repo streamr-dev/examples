@@ -28,7 +28,6 @@
     "stream:getStorageNodes": "node src/stream/getStorageNodes.js --run",
     "stream:removeFromStorageNode": "node src/stream/removeFromStorageNode.js --run",
     "stream:getPermissions": "node src/stream/permissions/getPermissions.js --run",
-    "stream:hasPermission": "node src/stream/permissions/hasPermission.js --run",
     "stream:setPermissionsForUser": "node src/stream/permissions/setPermissionsForUser.js --run",
     "stream:revokePermission": "node src/stream/permissions/revokePermission.js --run",
     "stream:getMyPermissions": "node src/stream/permissions/getMyPermissions.js --run",
