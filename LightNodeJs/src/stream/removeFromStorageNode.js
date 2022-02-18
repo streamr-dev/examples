@@ -17,11 +17,10 @@ const main = async () => {
     id: `/light-node-js-example/storage-node`,
   });
 
-
-  console.log('fetched/created stream', stream.id);
-  if (await stream.getStorageNodes().length === 0){
+  console.log("fetched/created stream", stream.id);
+  if ((await stream.getStorageNodes().length) === 0) {
     await stream.addToStorageNode(STREAMR_STORAGE_NODE_GERMANY);
-  } 
+  }
 
   await stream.removeFromStorageNode(STREAMR_STORAGE_NODE_GERMANY);
   console.log("Stream removed from storage node");

@@ -11,8 +11,9 @@ const main = async () => {
     },
   });
 
-  // Create the default stream
-  const stream = await client.getStream(`/light-node-js-example`);
+  const stream = await client.getOrCreateStream({
+    id: `/light-node-js-example/permissions`,
+  });
 
   console.log(`Stream ${stream.id} created`);
 

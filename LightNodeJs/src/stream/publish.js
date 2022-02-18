@@ -5,7 +5,7 @@ const { PrivateKey } = require("../config.js");
 const main = async () => {
   return new Promise(async (resolve, reject) => {
     try {
-      utils.isValidPrivateKey(PrivateKey)
+      utils.isValidPrivateKey(PrivateKey);
       // Create the client using the validated private key
       const client = new StreamrClient({
         auth: {
@@ -24,7 +24,7 @@ const main = async () => {
 
       const interval = setInterval(async () => {
         const message = {
-          type: "client:publish",
+          type: "stream:publish",
           ts: Date.now(),
         };
         await stream.publish(message);

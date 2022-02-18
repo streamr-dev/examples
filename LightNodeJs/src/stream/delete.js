@@ -12,8 +12,8 @@ const main = async () => {
   });
 
   // Create the default stream
-  const stream = await client.createStream({
-    id: `/light-node-js-example/${Date.now()}`,
+  const stream = await client.getOrCreateStream({
+    id: `/light-node-js-example/delete`,
   });
 
   console.log("Stream created", stream.id);

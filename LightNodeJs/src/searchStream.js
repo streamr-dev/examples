@@ -1,5 +1,4 @@
-const { StreamrClient, StreamPermission } =
-  require("streamr-client").StreamrClient;
+const { StreamrClient, StreamPermission } = require("streamr-client");
 const utils = require("./utils.js");
 const { PrivateKey } = require("./config.js");
 const main = async () => {

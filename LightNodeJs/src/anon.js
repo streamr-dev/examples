@@ -1,4 +1,5 @@
 const { StreamrClient, StreamPermission } = require("streamr-client");
+
 const utils = require("./utils.js");
 const { PrivateKey } = require("./config.js");
 
@@ -23,7 +24,10 @@ const main = async () => {
     !permissions.public ||
     !permissions.public.includes(StreamPermission.SUBSCRIBE)
   ) {
-    await stream.grantPublicPermission(StreamPermission.SUBSCRIBE);
+    await stream.grantPermissions({
+      public: true,
+      permissions: [StreamPermission.SUBSCRIBE],
+    });
     console.log("granted public subscribe permission on stream", stream.id);
   }
   // Create the client using no private key
@@ -41,6 +45,7 @@ const main = async () => {
       ts: Date.now(),
     };
     await authClient.publish(stream.id, message);
+
     console.log("Sent:", message);
   }, 1000);
 };
