@@ -1,5 +1,7 @@
-const { STREAMR_STORAGE_NODE_GERMANY, StreamrClient } =
-  require("streamr-client").StreamrClient;
+const {
+  STREAMR_STORAGE_NODE_GERMANY,
+  StreamrClient,
+} = require("streamr-client");
 const utils = require("./utils.js");
 const { PrivateKey } = require("./config.js");
 const main = async () => {
@@ -46,6 +48,18 @@ const main = async () => {
   subscription.onResent(() => {
     console.log("all messages resent");
   });
+
+  const resend = await client.resend(
+    stream.id,
+    {
+      // should see the recently send messages, along with 3 identical ones from storage
+      last: 6,
+    },
+    (message) => {
+      // Do something with the messages as they are received
+      console.log(JSON.stringify(message));
+    }
+  );
 };
 
 if (utils.isRunFlagPresent(process.argv)) {

@@ -17,7 +17,7 @@ const main = async () => {
     id: "/light-node-js-example/anon",
   });
 
-  console.log("created stream with id", stream.id);
+  console.log("created/fetched stream with id", stream.id);
   // public permissions per each action are required to interact with the anon streamr-client
   const permissions = await stream.getPermissions();
   if (

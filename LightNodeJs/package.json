@@ -30,11 +30,13 @@
     "stream:hasPermission": "node src/stream/permissions/hasPermission.js --run",
     "stream:getPermissions": "node src/stream/permissions/getPermissions.js --run",
     "stream:grantPermissions": "node src/stream/permissions/grantPermissions.js --run",
-    "stream:revokePermissions": "node src/stream/permissions/revokePermissions.js --run"
+    "stream:revokePermissions": "node src/stream/permissions/revokePermissions.js --run",
+    "stream:update": "node src/stream/update.js --run",
+    "du:create": "node src/data-union/create.js --run"
   },
   "dependencies": {
     "ethers": "^5.4.7",
-    "streamr-client": "6.0.0-beta.3"
+    "streamr-client": "6.0.0-beta.4"
   },
   "author": "",
   "license": "ISC",

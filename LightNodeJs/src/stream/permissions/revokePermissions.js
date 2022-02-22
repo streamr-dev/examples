@@ -17,7 +17,7 @@ const main = async () => {
   });
 
   const { address } = StreamrClient.generateEthereumAccount();
-  
+
   // grant user permission
   await stream.grantPermissions({
     user: address,
