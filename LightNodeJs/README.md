@@ -36,7 +36,6 @@ ______________________________________________________
 
 Running the examples:
 ```shell
-$ npm run connect
 $ npm run subscribe
 $ npm run unsubscribe
 $ npm run unsubscribeAll
@@ -46,4 +45,15 @@ $ npm run createStream
 $ npm run getStream
 $ npm run getOrCreateStream
 $ npm run publish
+$ npm run searchStream
+$ npm run stream:addToStorageNode
+$ npm run stream:publish
+$ npm run stream:delete
+$ npm run stream:getStorageNodes
+$ npm run stream:removeFromStorageNode
+$ npm run stream:hasPermission
+$ npm run stream:getPermissions
+$ npm run stream:grantPermissions
+$ npm run stream:revokePermissions
+$ npm run stream:update
 ```
