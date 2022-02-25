@@ -10,16 +10,9 @@ const main = async () => {
     },
   });
 
-  // Create the default stream
-  const stream = await client.createStream({
-    id: `/light-node-js-example/${Date.now()}`,
-  });
-
-  console.log(`Stream ${stream.id} created`);
-
-  // Now get the stream
-  const fetchedStream = await client.getStream(stream.id);
-  console.log(`Stream ${fetchedStream.id} fetched`);
+  const streamId = `${await client.getAddress()}/light-node-js-example`;
+  const stream = await client.getStream(streamId);
+  console.log(`Stream ${stream.id} fetched`);
   await client.destroy();
   return stream.id;
 };

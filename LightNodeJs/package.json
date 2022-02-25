@@ -10,7 +10,6 @@
   "scripts": {
     "test": "jest --runInBand",
     "prettier": "prettier --write src",
-    "connect": "node src/connect.js --run",
     "anon": "node src/anon.js --run",
     "subscribe": "node src/subscribe.js --run",
     "unsubscribe": "node src/unsubscribe.js --run",
@@ -36,7 +35,7 @@
   },
   "dependencies": {
     "ethers": "^5.4.7",
-    "streamr-client": "6.0.0-beta.4"
+    "streamr-client": "6.0.0"
   },
   "author": "",
   "license": "ISC",
