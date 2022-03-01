@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <script src="https://unpkg.com/streamr-client/streamr-client.web.js"></script>
+</head>
+
+<body>
+    <button onclick='publish()'>Publish</button>
+    <script>
+        const log = (msg) => {
+            var elem = document.createElement('p')
+            elem.innerHTML = msg
+            document.body.appendChild(elem)
+        }
+
+        let client;
+
+        // REPLACE THIS WITH YOUR STREAM ID
+        const STREAM_ID = '0x734b1035c36202236b1c009efe2d5e27bed2ff9c/browser-example'
+
+        // REPLACE THIS WITH YOUR PRIVATE KEY
+        const PrivateKey = '0xc06928b7f07babb92a8803ec82026e5a9ebd927beb56b6ccce0b428910d7268d'
+
+        if (STREAM_ID === 'YOUR-STREAM-ID') {
+            log('You need to register a Streamr account and get a Stream ID before you can use this example. Register and get from https://streamr.network/signup')
+        }
+
+        if (PrivateKey === 'YOUR-PRIVATE-KEY') {
+            log('You need to register a Streamr account and get a Private Key before you can use this example. Register and get from https://streamr.network/signup')
+        } else {
+            // Create the client and give the private key to use by default
+            client = new StreamrClient({
+                auth: {
+                    privateKey: PrivateKey,
+                }
+            })
+        }
+
+        function publish() {
+            // Here is the event we'll be sending
+            const msg = {
+                hello: 'world',
+                random: Math.random()
+            }
+
+            if (!client) {
+                log('Client hasn\'t been initialized. This is likely because you still need to replace the Stream ID and private key.');
+                return;
+            }
+
+            // Publish the event to the Stream
+            client.publish(STREAM_ID, msg)
+                .then(() => log(`Msg to ${STREAM_ID} published successfully: ${JSON.stringify(msg)}`))
+                .catch((err) => log(err))
+        }
+    </script>
+</body>
+
+</html>

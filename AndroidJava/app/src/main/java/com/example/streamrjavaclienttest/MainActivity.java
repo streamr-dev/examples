@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String ethereumPrivateKey = "YOUR_ETHEREUM_PRIVATE_KEY";
+        String ethereumPrivateKey = "YOUR_ETHEREUM_PrivateKey";
         String streamId = "YOUR_STREAM_ID";
 
         Thread subscribingThread = new Thread(new Runnable() {
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (ethereumPrivateKey.equals("YOUR_ETHEREUM_PRIVATE_KEY") || streamId.equals("YOUR_STREAM_ID")) {
+        if (ethereumPrivateKey.equals("YOUR_ETHEREUM_PrivateKey") || streamId.equals("YOUR_STREAM_ID")) {
             setText(
                 (TextView) findViewById(R.id.publishingTextView),
                 "Did you forget to set your Ethereum Private key or Stream ID"

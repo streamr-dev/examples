@@ -1,0 +1,14 @@
+{
+  "name": "streamr-browser-examples",
+  "version": "1.0.0",
+  "description": "This example demostrates how to use the Streamr Client with plain HTML. These examples use the web version of the Streamr JS client, pulled from the external [Unpkg service](https://unpkg.com/streamr-client).",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server ./www/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}

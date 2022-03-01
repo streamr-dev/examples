@@ -7,17 +7,17 @@ const log = (msg) => {
 }
 
 // REPLACE THIS WITH YOUR OWN PRIVATE KEY
-const PRIVATE_KEY = 'MY-PRIVATE-KEY'
+const PrivateKey = 'MY-PRIVATE-KEY'
 
 let client;
 
-if (PRIVATE_KEY === 'MY-PRIVATE-KEY') {
+if (PrivateKey === 'MY-PRIVATE-KEY') {
     log('You need to set your private key in the script')
 } else {
     // Create the client with default options
     client = new StreamrClient({
         auth: {
-            privateKey: PRIVATE_KEY
+            privateKey: PrivateKey
         }
     })
 }

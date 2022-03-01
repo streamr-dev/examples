@@ -1,0 +1,46 @@
+{
+  "name": "streamr-lightnodejs-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "test": "jest --runInBand",
+    "prettier": "prettier --write src",
+    "anon": "node src/anon.js --run",
+    "subscribe": "node src/subscribe.js --run",
+    "unsubscribe": "node src/unsubscribe.js --run",
+    "unsubscribeAll": "node src/unsubscribeAll.js --run",
+    "getSubscriptions": "node src/getSubscriptions.js --run",
+    "resend": "node src/resend.js --run",
+    "createStream": "node src/createStream.js --run",
+    "getStream": "node src/getStream.js --run",
+    "getOrCreateStream": "node src/getOrCreateStream.js --run",
+    "publish": "node src/publish.js --run",
+    "searchStream": "node src/searchStream.js --run",
+    "stream:addToStorageNode": "node src/stream/addToStorageNode.js --run",
+    "stream:publish": "node src/stream/publish.js --run",
+    "stream:delete": "node src/stream/delete.js --run",
+    "stream:getStorageNodes": "node src/stream/getStorageNodes.js --run",
+    "stream:removeFromStorageNode": "node src/stream/removeFromStorageNode.js --run",
+    "stream:hasPermission": "node src/stream/permissions/hasPermission.js --run",
+    "stream:getPermissions": "node src/stream/permissions/getPermissions.js --run",
+    "stream:grantPermissions": "node src/stream/permissions/grantPermissions.js --run",
+    "stream:revokePermissions": "node src/stream/permissions/revokePermissions.js --run",
+    "stream:update": "node src/stream/update.js --run",
+    "du:create": "node src/data-union/create.js --run"
+  },
+  "dependencies": {
+    "ethers": "^5.4.7",
+    "streamr-client": "6.0.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.3.1",
+    "prettier": "^2.5.1"
+  }
+}

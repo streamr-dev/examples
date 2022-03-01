@@ -1,0 +1,37 @@
+{
+  "name": "streamr-broker-node-example",
+  "version": "0.0.1",
+  "description": "Using broker APIs in node",
+  "main": "node.js",
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "test": "jest --runInBand",
+    "prettier": "prettier --write src",
+    "broker:start": "streamr-broker src/config.json",
+    "broker:start-api-key": "streamr-broker src/api-key-auth/config.json",
+    "http:publish": "node --experimental-json-modules src/http-publish.js --run",
+    "http:api-key-publish": "node --experimental-json-modules src/api-key-auth/http-publish.js --run",
+    "ws:publish": "node --experimental-json-modules src/ws-publish.js --run",
+    "ws:api-key-publish": "node --experimental-json-modules src/api-key-auth/ws-publish.js --run",
+    "ws:subscribe": "node --experimental-json-modules src/ws-subscribe.js --run",
+    "ws:api-key-subscribe": "node --experimental-json-modules src/api-key-auth/ws-subscribe.js --run",
+    "mqtt:publish": "node --experimental-json-modules src/mqtt-publish.js --run",
+    "mqtt:api-key-publish": "node --experimental-json-modules src/api-key-auth/mqtt-publish.js --run",
+    "mqtt:subscribe": "node --experimental-json-modules src/mqtt-subscribe.js --run",
+    "mqtt:api-key-subscribe": "node --experimental-json-modules src/api-key-auth/mqtt-subscribe.js --run"
+  },
+  "dependencies": {
+    "ethers": "^5.4.7",
+    "mqtt": "^4.2.8",
+    "streamr-broker": "^31.0.0",
+    "superagent": "^6.1.0",
+    "ws": "^8.2.2"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1",
+    "prettier": "^2.5.1"
+  }
+}

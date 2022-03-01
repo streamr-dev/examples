@@ -1,0 +1,24 @@
+{
+  "$schema": "http://schema.streamr.network/config-v1.schema.json",
+  "client": {
+    "auth": {
+      "privateKey": ""
+    }
+  },
+  "plugins": {
+    "metrics": {},
+    "websocket": {
+      "port": 7071
+    },
+    "mqtt": {
+      "port": 7072
+    },
+    "publishHttp": {}
+  },
+  "apiAuthentication": {
+    "keys": ["Y2U1MjU2YzhkNmQxNGNjOGIxZjRlY2ViYWVmNGM5Nzc"]
+  },
+  "httpServer": {
+    "port": 7073
+  }
+}
