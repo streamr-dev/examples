@@ -1,7 +1,7 @@
 const StreamrClient = require("streamr-client");
 const utils = require("./utils.js");
 const { PrivateKey } = require("./config.js");
-const main = async () => {
+const main = async ({ isTest = false }) => {
   return new Promise(async (resolve, reject) => {
     try {
       utils.isValidPrivateKey(PrivateKey);
@@ -24,7 +24,10 @@ const main = async () => {
         };
         await client.publish(stream, message);
         console.log("Sent successfully: ", message);
-        resolve({ client, interval });
+        if (isTest) {
+          clearInterval(interval);
+        }
+        resolve({ client });
       }, 1000);
     } catch (e) {
       reject(e);

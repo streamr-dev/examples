@@ -31,35 +31,56 @@ const main = async () => {
   // ensure that the stream is being stored!
   console.log("Stream fetched:", stream.id);
 
-  const subscription = await client.subscribe(
-    {
-      stream: stream.id,
-      resend: {
+  const subscriptionPromise = new Promise(async (resolve, reject) => {
+    setTimeout(() => reject, 5000);
+    const subscription = await client.subscribe(
+      {
+        stream: stream.id,
+        resend: {
+          // should see the recently send messages, along with 3 identical ones from storage
+          last: 6,
+        },
+      },
+      (message) => {
+        // Do something with the messages as they are received
+        console.log("publish:", JSON.stringify(message));
+      }
+    );
+
+    subscription.onResent(() => {
+      console.log("all messages resent");
+      resolve();
+    });
+  });
+
+  const resendPromise = new Promise(async (resolve, reject) => {
+    setTimeout(() => reject, 5000);
+    // tmp fix until resend.onResent is implemented
+    let i = 0;
+    const resend = await client.resend(
+      stream.id,
+      {
         // should see the recently send messages, along with 3 identical ones from storage
         last: 6,
       },
-    },
-    (message) => {
-      // Do something with the messages as they are received
-      console.log(JSON.stringify(message));
-    }
-  );
-
-  subscription.onResent(() => {
-    console.log("all messages resent");
+      (message) => {
+        // Do something with the messages as they are received
+        console.log("resend:", JSON.stringify(message));
+        i += 1;
+        if (i === 6) {
+          console.log("all messages resent");
+          resolve();
+        }
+      }
+    );
   });
 
-  const resend = await client.resend(
-    stream.id,
-    {
-      // should see the recently send messages, along with 3 identical ones from storage
-      last: 6,
-    },
-    (message) => {
-      // Do something with the messages as they are received
-      console.log(JSON.stringify(message));
-    }
-  );
+  await Promise.all([
+    subscriptionPromise,
+    // required for test parameter sorting
+    new Promise((resolve) => setTimeout(resolve, 1000)),
+    resendPromise,
+  ]);
 };
 
 if (utils.isRunFlagPresent(process.argv)) {

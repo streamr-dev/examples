@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "jest --runInBand",
-    "prettier": "prettier --write src",
+    "prettier": "prettier --write src test",
     "anon": "node src/anon.js --run",
     "subscribe": "node src/subscribe.js --run",
     "unsubscribe": "node src/unsubscribe.js --run",

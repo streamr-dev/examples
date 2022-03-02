@@ -1,7 +1,7 @@
 const StreamrClient = require("streamr-client");
 const utils = require("./utils.js");
 const { PrivateKey } = require("./config.js");
-const main = async () => {
+const main = async ({ isTest = false }) => {
   utils.isValidPrivateKey(PrivateKey);
   // Create the client using the validated private key
   const client = new StreamrClient({
@@ -19,7 +19,10 @@ const main = async () => {
   const subscription = await client.subscribe(
     { stream: stream.id },
     (message) => {
-      console.log(JSON.stringify(message));
+      // avoid printing in tests
+      if (!isTest) {
+        console.log("sub:", JSON.stringify(message));
+      }
     }
   );
   console.log("subscription created");
