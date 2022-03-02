@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "jest --runInBand",
-    "prettier": "prettier --write src",
+    "prettier": "prettier --write src test",
     "broker:start": "streamr-broker src/config.json",
     "broker:start-api-key": "streamr-broker src/api-key-auth/config.json",
     "http:publish": "node --experimental-json-modules src/http-publish.js --run",

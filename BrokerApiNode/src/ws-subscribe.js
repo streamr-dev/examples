@@ -17,9 +17,9 @@ const main = async (port = 9091) => {
       ws.on("message", (json) => {
         const data = JSON.parse(json);
         console.log("Received data: ", data);
-        resolve(data);
       });
       console.log("websocket listener connected");
+      resolve();
     } catch (e) {
       reject(e);
     }

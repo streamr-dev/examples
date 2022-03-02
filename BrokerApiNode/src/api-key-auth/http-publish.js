@@ -4,13 +4,13 @@ const util = require("../util");
 
 const API_KEY = BrokerConfig.apiAuthentication.keys[0];
 
-const main = async () => {
+const main = async (PORT = 7073) => {
   return new Promise((resolve, reject) => {
     try {
       const streamId = encodeURIComponent(
         "0x734b1035c36202236b1c009efe2d5e27bed2ff9c/broker-node-example"
       );
-      const url = `http://localhost:7073/streams/${streamId}`;
+      const url = `http://localhost:${PORT}/streams/${streamId}`;
 
       const interval = setInterval(async () => {
         const message = {

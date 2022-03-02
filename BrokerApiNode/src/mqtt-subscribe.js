@@ -18,8 +18,8 @@ const main = async (port = 9092) => {
             const json = rawData.toString();
             const data = JSON.parse(json);
             console.log("Received data: ", data);
-            resolve(data);
           });
+          resolve();
         });
       });
     } catch (e) {

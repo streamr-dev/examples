@@ -6,13 +6,13 @@ const util = require("../util");
 
 const API_KEY = BrokerConfig.apiAuthentication.keys[0];
 
-const main = async () => {
+const main = async (PORT = 7071) => {
   return new Promise((resolve, reject) => {
     try {
       const streamId =
         "0x734b1035c36202236b1c009efe2d5e27bed2ff9c/broker-node-example";
       const ws = new WebSocket(
-        `ws://localhost:7071/streams/${streamId}/publish?apiKey=${API_KEY}`
+        `ws://localhost:${PORT}/streams/${streamId}/publish?apiKey=${API_KEY}`
       );
 
       ws.on("open", () => {

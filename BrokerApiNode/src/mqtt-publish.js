@@ -12,17 +12,16 @@ const main = async (port = 9092) => {
       const client = mqtt.connect(`mqtt://localhost:${port}`);
 
       client.on("connect", () => {
-        client.subscribe(streamId, (err) => {
-          const interval = setInterval(async () => {
-            const message = {
-              type: "broker:mqtt:publish",
-              ts: Date.now(),
-            };
-            client.publish(streamId, JSON.stringify(message));
-            console.log("Sent successfully: ", message);
-            resolve({ interval });
-          }, 1000);
-        });
+        console.log("mqtt listener connected");
+        const interval = setInterval(async () => {
+          const message = {
+            type: "broker:mqtt:publish",
+            ts: Date.now(),
+          };
+          client.publish(streamId, JSON.stringify(message));
+          console.log("Sent successfully: ", message);
+          resolve({ interval });
+        }, 1000);
       });
     } catch (e) {
       reject(e);
