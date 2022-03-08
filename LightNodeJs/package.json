@@ -30,6 +30,7 @@
     "stream:getPermissions": "node src/stream/permissions/getPermissions.js --run",
     "stream:grantPermissions": "node src/stream/permissions/grantPermissions.js --run",
     "stream:revokePermissions": "node src/stream/permissions/revokePermissions.js --run",
+    "setPermissions": "node src/setPermissions.js --run",
     "stream:update": "node src/stream/update.js --run",
     "du:create": "node src/data-union/create.js --run"
   },
