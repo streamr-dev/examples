@@ -1,0 +1,15 @@
+{
+  "name": "streamr-mqtt-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async-mqtt": "^2.6.2",
+    "streamr-client": "^6.0.4"
+  }
+}
