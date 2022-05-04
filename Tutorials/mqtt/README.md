@@ -31,11 +31,11 @@ To include more verbose logging you can add the related flags:
 $ LOG_LEVEL=trace DEBUG=Streamr* streamr-broker
 ```
 ## 2 - Create the Stream and update the stream access control.
-Load a separate Ethereum address (User wallet) with a small amount of MATIC. This is easiest on Metamask. I can send builders a bit of MATIC to get started - just ask and share your address. In this step the Broker node is given permission to publish data points to the stream.
+In this step the Broker node is given permission to publish data points to the stream.
 
 In order to create a stream you will need an Ethereum address with a small amount of MATIC to pay for gas during stream creation and permission assignation.
 
-In this step we will be using the javascript `streamr-client v>= 6.0.4`.
+We will be using the javascript `streamr-client v>= 6.0.4`.
 
 ### 2.1 StreamrClient creation
 First, we create a `StreamrClient` instance with our funded private key:
@@ -48,7 +48,7 @@ const streamr = new StreamrClient({
 ```
 
 ### 2.2 Stream creation
-With out `streamr` instance we can now create a stream:
+With our `streamr` instance we can now create a stream:
 ```javascript
 const stream = await streamr.createStream({
     id: '/sensor/firehose',
@@ -95,11 +95,6 @@ $ node scripts/01-CreateStreamAndAssignPermissions.js
 
 
 ## 3 - Configure your device to publish to the Streamr Broker Node's MQTT interface
-
-Your broker's address is just its local IP address, assuming your device and your broker are on the same network, along with the port you opened as part of your broker init. E.g. mqtt://192.168.1.2:1883 (default port). Or localhost if they are on the same machine.
-
-This is a MQTT node publishing script (you may use something else here, like the Helium console). API key from the broker config in step 1:
-
 ### 3.1 - Presets
 In order to publish into our created streams we will need to have an instance of the broker running. 
 
@@ -123,9 +118,31 @@ $ cat ~/.streamr/config/default.json
 
 When connecting to the broker's MQTT plugin you will need to provide the url with the MQTT port (default is 1883), as well as an empty `username` field and the `ApiKey` as the `password`.
 
+```javascript
+// Node.js example
+
+const mqttClient = await mqtt.connectAsync(
+    'mqtt://localhost:1883', 
+    {
+        username: '',
+        password: ApiKey,
+    }
+)
+```
+
 ### 3.3 - Publishing data
 
 Once connected the MQTT client can call `publish` by providing a `StreamId` as the first parameter and a message as the second, which will be casted by the broker into the provided stream.
+
+```javascript
+// Node.js example
+
+await mqttClient.publish(
+    StreamId, 
+    JSON.stringify({ foo: bar })
+)
+
+```
 
 ### 3.4 - The Example Script
 You can find a node.js example using `async-mqtt` in the [MQTT publisher script](./scripts/02-MqttPublisher.js)
@@ -135,9 +152,21 @@ You can find a node.js example using `async-mqtt` in the [MQTT publisher script]
 ### 4.1 With MQTT
 You can consume the published data via MQTT as well.
 
-You will need to get your `ApiKey` as described in 3.1 and authenticate your MQTT client as described in 3.2
+You will need to get your `ApiKey` as described in [3.1 - Presets](#3.1-presets) and authenticate your MQTT client as described in [3.2 - Authentication)[#3.2-authentication]
 
-Once connected, you can listen for the `message` callback on the MQTT client. The first parameter will be the `StreamId` and the second one the published message.
+Once connected, you can listen for the `message` callback on the MQTT client. The first parameter will be the `StreamId` and the second one the published message:
+
+```javascript
+// Node.js example
+
+mqttClient.subscribe(StreamId)
+...
+mqttClient.on('connect', () => {
+    mqttClient.on('message', (streamId, rawData) => {
+        ...
+    })
+})
+```
 
 You can find an example using node.js and `mqtt` in the [MQTT subscriber script](./scripts/03-MqttSubscriber.js)
 
