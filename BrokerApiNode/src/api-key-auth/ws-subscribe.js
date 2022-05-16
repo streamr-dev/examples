@@ -11,7 +11,7 @@ const main = async (PORT = 7071) => {
   return new Promise((resolve, reject) => {
     try {
       const streamId = encodeURIComponent(
-        "0x734b1035c36202236b1c009efe2d5e27bed2ff9c/broker-node-example"
+        "0x00de714cbad811af322f539a043ec71eab7fa3a5/broker-example"
       );
       const ws = new WebSocket(
         `ws://localhost:${PORT}/streams/${streamId}/subscribe?apiKey=${API_KEY}`

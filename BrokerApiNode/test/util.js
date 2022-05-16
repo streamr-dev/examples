@@ -1,4 +1,5 @@
 const createBroker = require("streamr-broker/dist/src/broker.js").createBroker;
+const { Wallet } = require('ethers')
 
 exports.TimeoutMs = 30 * 1000;
 
@@ -11,7 +12,10 @@ exports.TimeoutMs = 30 * 1000;
   });
 
 exports.startBroker = async (config) => {
-  const broker = await createBroker(config);
+  const broker = await createBroker({
+    ...config, 
+   client: { ...config.client, auth: {privateKey: Wallet.createRandom().privateKey}}
+});
   await broker.start();
   return broker;
 };

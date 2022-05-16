@@ -2,7 +2,7 @@
   "$schema": "http://schema.streamr.network/config-v1.schema.json",
   "client": {
     "auth": {
-      "privateKey": ""
+      "privateKey": "0x511fa6b9c1fdea50e52412e8142ed5e3918c4c0223d55a46b3870a5a2c6c2e51"
     }
   },
   "plugins": {
