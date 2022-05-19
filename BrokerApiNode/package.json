@@ -28,6 +28,7 @@
     "mqtt": "^4.2.8",
     "streamr-broker": "^31.0.2",
     "superagent": "^6.1.0",
+    "unique-names-generator": "^4.7.1",
     "ws": "^8.2.2"
   },
   "devDependencies": {

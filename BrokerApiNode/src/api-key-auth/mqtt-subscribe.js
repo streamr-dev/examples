@@ -2,9 +2,6 @@ const mqtt = require("mqtt");
 const BrokerConfig = require("./config.json");
 const util = require("../util");
 
-// Documented on the following test:
-// https://github.com/streamr-dev/network-monorepo/blob/main/packages/broker/test/integration/plugins/mqtt/MqttPlugin.test.ts
-
 const API_KEY = BrokerConfig.apiAuthentication.keys[0];
 
 const main = async (PORT = 7072) => {

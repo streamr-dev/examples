@@ -1,6 +1,6 @@
 const superagent = require("superagent");
 const BrokerConfig = require("./config.json");
-const util = require("../util");
+const { isRunFlagPresent, getRandomPublisherName } = require("../util");
 
 const API_KEY = BrokerConfig.apiAuthentication.keys[0];
 
@@ -12,8 +12,13 @@ const main = async (PORT = 7073) => {
       );
       const url = `http://localhost:${PORT}/streams/${streamId}`;
 
+      const publisherName = getRandomPublisherName();
+
+      console.log(`Started HTTP publisher with name ${publisherName}`);
+
       const interval = setInterval(async () => {
         const message = {
+          publisher: publisherName,
           type: "broker:http:publish",
           ts: Date.now(),
         };
@@ -33,7 +38,7 @@ const main = async (PORT = 7073) => {
   });
 };
 
-if (util.isRunFlagPresent(process.argv)) {
+if (isRunFlagPresent(process.argv)) {
   main();
 }
 

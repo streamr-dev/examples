@@ -1,9 +1,6 @@
 const WebSocket = require("ws").WebSocket;
 const util = require("./util");
 
-// Documented on the following test:
-// https://github.com/streamr-dev/network-monorepo/blob/main/packages/broker/test/integration/plugins/websocket/WebsocketPlugin.test.ts
-
 const main = async (port = 9091) => {
   return new Promise((resolve, reject) => {
     try {

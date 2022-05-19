@@ -1,9 +1,6 @@
 const mqtt = require("mqtt");
 const BrokerConfig = require("./config.json");
-const util = require("../util");
-
-// Documented on the following test:
-// https://github.com/streamr-dev/network-monorepo/blob/main/packages/broker/test/integration/plugins/mqtt/MqttPlugin.test.ts
+const { isRunFlagPresent, getRandomPublisherName } = require("../util");
 
 const API_KEY = BrokerConfig.apiAuthentication.keys[0];
 
@@ -17,10 +14,15 @@ const main = async (PORT = 7072) => {
         password: API_KEY,
       });
 
+      const publisherName = getRandomPublisherName();
+
+      console.log(`Started MQTT publisher with name ${publisherName}`);
+
       client.on("connect", () => {
         console.log("mqtt listener connected");
         const interval = setInterval(async () => {
           const message = {
+            publisher: publisherName,
             type: "broker:mqtt:publish",
             ts: Date.now(),
           };
@@ -39,7 +41,7 @@ const main = async (PORT = 7072) => {
   });
 };
 
-if (util.isRunFlagPresent(process.argv)) {
+if (isRunFlagPresent(process.argv)) {
   main();
 }
 
