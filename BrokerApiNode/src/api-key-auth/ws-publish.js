@@ -15,7 +15,7 @@ const main = async (PORT = 7071) => {
 
       const publisherName = getRandomPublisherName();
 
-      console.log(`Started HTTP publisher with name ${publisherName}`);
+      console.log(`Started WS publisher with name ${publisherName}`);
 
       ws.on("open", () => {
         const interval = setInterval(async () => {
