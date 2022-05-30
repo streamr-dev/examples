@@ -1,4 +1,5 @@
 # Bridging data into the Streamr Network using the Broker node MQTT interface 
+In this tutorial you will publish data into the Streamr Network using the MQTT interface of a Streamr Network Broker node.
 
 ## 1. Setup your Broker node.
 This tutorial is applicable for MacOS/Linux environments. Windows environments may require minor adjustments (file locations, etc). For more in depth information on installing a Broker node, see the [installing a Broker node docs](https://streamr.network/docs/streamr-network/installing-broker-node).
@@ -11,6 +12,8 @@ Prerequisites:
 ```shell
 $ npm i -g streamr-broker@31.0.1
 ```
+
+This tutorial uses Broker node version `31.0.1` but always use the latest stable version when possible.
 
 ### Initial Broker node setup
 Before the Broker node can be started its configuration files need to be created using the following command:
@@ -40,7 +43,7 @@ In this step the Broker node is given permission to publish data points to the s
 
 In order to create a stream you will need an Ethereum address with a small amount of `MATIC` to pay for gas during stream creation and permission assignment. `MATIC` is the native token of the Polygon blockchain.
 
-This tutorial uses the JavaScript `streamr-client v>= 6.0.4` but always use the latest stable version when possible.
+This tutorial uses Streamr Client version `6.0.4` but always use the latest stable version when possible.
 
 ### Initialize the Streamr Client
 Inside a NodeJS script, instantiate a `StreamrClient` instance called `streamr`, with the funded Ethereum account (private key) from the previous step:
@@ -159,7 +162,7 @@ Note, at the time of writing, the Broker node will reject any non-JSON payload -
 Your data points are now being published into the Streamr Network, via your Broker node, inside the stream you've created.
 
 ## 4. Subscribe to your stream
-The last remaining step is to connect to the Streamr Network and consume or subscribe to your data!
+The last remaining step is to connect to the Streamr Network and consume/subscribe to your data!
 
 ### Subscribe using the Streamr UI
 You can see the published messages on your streams by using [Streamr's UI](https://streamr.network/core), logging in with Metamask with your Broker's private key (you will need to "Import account by private key"), finding your stream, and observing the live stream data preview.
@@ -197,8 +200,8 @@ You can find this example [MQTT subscriber script](./scripts/03-MqttSubscriber.j
 ## 5. All done 🎉
 Congratulations! You accomplished:
 - Running a node in the Streamr Network,
-- Created a stream and edited its access control on the on-chain stream registry
-- Published data to the Streamr Network using the MQTT interface of your running Broker node
-- Subscribed to that data
+- Created a stream and edited its access control on the on-chain stream registry,
+- Published data to the Streamr Network using the MQTT interface of your running Broker node,
+- Subscribed to your flowing data.
 
 If you had any problems along the way, please drop a message to the core team on the #dev channel of our [Discord](https://discord.gg/gZAm8P7hK8).
