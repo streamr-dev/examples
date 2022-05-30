@@ -13,7 +13,7 @@ const main = async () => {
     
     setInterval(async () => {
         const msg = {
-            "greeting": "hi Steve!",
+            "greeting": "Hello world!",
         }
         await client.publish(StreamId, JSON.stringify(msg))
         console.log('🎉 published: ', msg)
