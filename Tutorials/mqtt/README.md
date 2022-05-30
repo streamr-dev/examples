@@ -1,4 +1,4 @@
-# Bridging data into the Network with the Broker Node interface 
+# Bridging data into the Streamr Network using the Broker node interface 
 
 ## 1 - Setup your broker node. (For MacOS/Linux)
 Prerequisites: NPM v8 and Node 16.13.x
