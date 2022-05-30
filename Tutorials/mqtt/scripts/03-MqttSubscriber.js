@@ -1,7 +1,7 @@
 const mqtt = require('mqtt')
 
 const StreamId = '0x2f1418bbe3512156175efa3ef466f40df0161990/sensor/firehose'
-const ApiKey = 'MmZjMTMzZDAxMzAwNGIyZDg4ZTNmMzYzZjU3NWU2YTY'
+const ApiKey = 'YOUR_API_KEY'
 
 const main = async () => {
     const client = mqtt.connect('mqtt://localhost:1883', 
