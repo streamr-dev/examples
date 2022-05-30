@@ -176,7 +176,7 @@ $ streamr stream subscribe 0x.../sensor/firehose --private-key YOUR_PRIVATE_KEY
 ### Subscribe using a Broker node interface
 Just like you used the Broker node's MQTT interface to publish data into the network, you can also pull data out of the Network via any Broker nodes interface just as well. Just make sure that the Broker node has `SUBSCRIBE` permission to the stream you are interested in.
 
-You will need to authenticate your client using your `ApiKey`, just as you did in the [MQTT authentication step](### MQTT interface authentication).
+You will need to authenticate your client using your `ApiKey`.
 
 Once connected, you can listen for the `message` callback on the MQTT client. The first parameter will be the `StreamId` and the second parameter will contain the message JSON payload:
 
