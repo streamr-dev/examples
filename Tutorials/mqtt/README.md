@@ -9,7 +9,7 @@ $ npm i -g streamr-broker@31.0.1
 ```
 
 ### 1.2 - Initial broker setup
-Before the broker can be started its configuration files need to be created using the following command:
+Before the Broker node can be started its configuration files need to be created using the following command:
 ```shell
 $ streamr-broker-init
 ```
