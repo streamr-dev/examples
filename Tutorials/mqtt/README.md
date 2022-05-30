@@ -1,6 +1,8 @@
 # Bridging data into the Streamr Network using the Broker node MQTT interface 
 
-## 1 - Setup your broker node. (For MacOS/Linux)
+## 1 - Setup your broker node.
+This tutorial is applicable for MacOS/Linux environments. Windows environments may require minor adjustments (file locations, etc). For more in depth information on installing a Broker node, see the [installing a Broker node docs](https://streamr.network/docs/streamr-network/installing-broker-node).
+
 Prerequisites: 
 - NPM v8 
 - NodeJS 16.13.x
@@ -21,8 +23,6 @@ Once the script is done you can view your generated configuration file with:
 ```shell
 $ cat ~/.streamr/config/default.json
 ```
-
-For more information on installing a Broker node, see the [installing a Broker node docs](https://streamr.network/docs/streamr-network/installing-broker-node).
 
 ### 1.3 - Running the Broker node
 Start the broker by running:
