@@ -1,7 +1,7 @@
 const mqtt = require('async-mqtt')
 
 const StreamId = '0x123/your/stream/id'
-const ApiKey = 'MmZjMTMzZDAxMzAwNGIyZDg4ZTNmMzYzZjU3NWU2YTY'
+const ApiKey = 'YOUR_API_KEY'
 
 const main = async () => {
     const client = await mqtt.connectAsync('mqtt://localhost:1883', 
