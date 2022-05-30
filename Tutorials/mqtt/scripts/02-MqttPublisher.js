@@ -16,7 +16,7 @@ const main = async () => {
             "greeting": "Hello world!",
         }
         await client.publish(StreamId, JSON.stringify(msg))
-        console.log('🎉 published: ', msg)
+        console.log('Publishing: ', msg)
     }, 1000)
 }
 
