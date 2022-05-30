@@ -1,6 +1,6 @@
 const mqtt = require('mqtt')
 
-const StreamId = '0x2f1418bbe3512156175efa3ef466f40df0161990/sensor/firehose'
+const StreamId = '0x123/your/stream/id'
 const ApiKey = 'YOUR_API_KEY'
 
 const main = async () => {
