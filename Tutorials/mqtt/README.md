@@ -10,7 +10,7 @@ Prerequisites:
 
 ### Install `streamr-broker` globally
 ```shell
-$ npm i -g streamr-broker@31.0.1
+$ npm i -g streamr-broker
 ```
 
 This tutorial uses Broker node version `31.0.1` but always use the latest stable version when possible.
