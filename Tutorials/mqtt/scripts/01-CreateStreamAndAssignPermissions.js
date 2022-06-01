@@ -31,6 +31,9 @@ const main = async () => {
         ]
     })
     // Check the granted permissions
+    // Temporary delay for The Graph indexing delay (not necessary, but nice for quick console logging!)
+    await new Promise(r => setTimeout(r, 5000));
+    
     const permissions = await stream.getPermissions()
     console.log(stream.id, permissions)
 }
