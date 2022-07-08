@@ -1,21 +1,23 @@
 const WebSocket = require("ws").WebSocket;
-const util = require("./util");
-
-// Documented on the following test:
-// https://github.com/streamr-dev/network-monorepo/blob/main/packages/broker/test/integration/plugins/websocket/WebsocketPlugin.test.ts
+const { isRunFlagPresent, getRandomPublisherName } = require("./util");
 
 const main = async (port = 9091) => {
   return new Promise((resolve, reject) => {
     try {
       const streamId =
-        "0x734b1035c36202236b1c009efe2d5e27bed2ff9c/broker-node-example";
+        "0x00de714cbad811af322f539a043ec71eab7fa3a5/broker-example";
       const ws = new WebSocket(
         `ws://localhost:${port}/streams/${streamId}/publish`
       );
 
+      const publisherName = getRandomPublisherName();
+
+      console.log(`Started WS publisher with name ${publisherName}`);
+
       ws.on("open", () => {
         const interval = setInterval(async () => {
           const message = {
+            publisher: publisherName,
             type: "broker:ws:publish",
             ts: Date.now(),
           };
@@ -31,7 +33,7 @@ const main = async (port = 9091) => {
   });
 };
 
-if (util.isRunFlagPresent(process.argv)) {
+if (isRunFlagPresent(process.argv)) {
   main();
 }
 

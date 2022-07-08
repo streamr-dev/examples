@@ -1,16 +1,20 @@
 const superagent = require("superagent");
-const util = require("./util");
+const { isRunFlagPresent, getRandomPublisherName } = require("./util");
 
 const main = async (port = 9093) => {
   return new Promise((resolve, reject) => {
     try {
       const streamId = encodeURIComponent(
-        "0x734b1035c36202236b1c009efe2d5e27bed2ff9c/broker-node-example"
+        "0x00de714cbad811af322f539a043ec71eab7fa3a5/broker-example"
       );
       const url = `http://localhost:${port}/streams/${streamId}`;
+      const publisherName = getRandomPublisherName();
+
+      console.log(`Started HTTP publisher with name ${publisherName}`);
 
       const interval = setInterval(async () => {
         const message = {
+          publisher: publisherName,
           type: "broker:http:publish",
           ts: Date.now(),
         };
@@ -29,7 +33,7 @@ const main = async (port = 9093) => {
   });
 };
 
-if (util.isRunFlagPresent(process.argv)) {
+if (isRunFlagPresent(process.argv)) {
   main();
 }
 
