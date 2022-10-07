@@ -9,13 +9,6 @@
 
 This repository contains various examples of different Streamr usage patterns. Feel free to explore!
 
----
-
-#### Data fund
-We strive to achieve our vision of a decentralized data economy. The Data Fund is an allocation of 10 million DATA created to support projects that further this vision. We support two types of grants:
-
-- Up to $5,000 USD for building integrations, demo apps, adding quality open data streams, research, community initiatives and other smaller projects.
-
 #### Useful links
 - Website https://streamr.network
 - Roadmap https://streamr.network/roadmap
