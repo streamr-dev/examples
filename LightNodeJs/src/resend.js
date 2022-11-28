@@ -45,10 +45,6 @@ const main = async () => {
     }
   );
 
-  subscription.onResent(() => {
-    console.log("all messages resent");
-  });
-
   const resend = await client.resend(
     stream.id,
     {
