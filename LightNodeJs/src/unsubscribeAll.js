@@ -7,7 +7,9 @@ const { PrivateKey } = require("./config.js");
 const main = async () => {
   utils.isValidPrivateKey(PrivateKey);
   // Create the client using the validated private key
+  const clientConfig = utils.getClientConfig(process.argv);
   const client = new StreamrClient({
+    ...clientConfig,
     auth: {
       privateKey: PrivateKey,
     },
@@ -24,7 +26,7 @@ const main = async () => {
   const streams = await client.unsubscribe();
   console.log(`Unsubscribed from all streams`);
   console.log(streams);
-  await client.destroy;
+  await client.destroy();
   return stream.id;
 };
 

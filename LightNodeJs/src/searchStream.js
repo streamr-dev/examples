@@ -4,7 +4,9 @@ const { PrivateKey } = require("./config.js");
 const main = async () => {
   utils.isValidPrivateKey(PrivateKey);
   // Create the client using the validated private key
+  const clientConfig = utils.getClientConfig(process.argv);
   const client = new StreamrClient({
+    ...clientConfig,
     auth: {
       privateKey: PrivateKey,
     },
